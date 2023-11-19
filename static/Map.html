@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+<canvas id="canvasId" width="800" height="800" style="border:2px dotted #336688"></canvas>
+<div id="result"></div>
+
+<script src="../src/MapManager.js"></script>
+
+<script>
+    let canvas = document.getElementById("canvasId");
+    let ctx = canvas.getContext("2d");
+    const mapManager = new MapManager();
+    mapManager.loadMap("../tiles/level.json");
+    //mapManager.draw(ctx);
+</script>
+
+</body>
+</html>
