@@ -96,6 +96,8 @@ class MapManager {
         if (!this.imgLoaded || !this.jsonLoaded) {
             setTimeout(() => this.draw(ctx), 100);
         } else {
+            const canvasWidth = ctx.canvas.width;
+            const canvasHeight = ctx.canvas.height;
 
             if (this.tLayer.length === 0) {
                 for (let id = 0; id < this.mapData.layers.length; id++) {
@@ -106,7 +108,13 @@ class MapManager {
                 }
             }
 
-            for(let j = 0; j < this.tLayer.length; j++) {
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = this.mapSize.x;
+            tempCanvas.height = this.mapSize.y;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            for (let j = 0; j < this.tLayer.length; j++) {
                 for (let i = 0; i < this.tLayer[j].data.length; i++) {
                     if (this.tLayer[j].data[i] !== 0) {
                         const tile = this.getTile(this.tLayer[j].data[i]);
@@ -114,13 +122,17 @@ class MapManager {
                         const pY = Math.floor(i / this.xCount) * this.tSize.y;
 
                         if (tile.img instanceof HTMLImageElement) {
-                            ctx.drawImage(tile.img, tile.px, tile.py, this.tSize.x, this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
+                            tempCtx.drawImage(tile.img, tile.px, tile.py, this.tSize.x, this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
                         } else {
                             console.error("Invalid tile.img type:", tile.img);
                         }
                     }
                 }
             }
+
+            ctx.drawImage(tempCanvas, 0, 0, canvasWidth, canvasHeight);
         }
     }
+
+
 }
