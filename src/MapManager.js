@@ -3,13 +3,13 @@ class MapManager {
         this.imgLoadCount = 0;
         this.imgLoaded = false;
         this.jsonLoaded = false
-        this.mapData = null; // переменная для хранения карты
-        this.tLayer = []; // переменная для хранения ссылки на блоки карты (надо хранить массив)
-        this.xCount = 0; // количсетво блоков по горизонтали
-        this.yCount = 0; // количество блоков по вертикали
-        this.tSize = {x: 16, y: 16}; // размер блока
-        this.mapSize = {x: 30, y: 15}; // размер карты в пикселях
-        this.tilesets = []; // массив описаний блоков карты
+        this.mapData = null;
+        this.tLayer = [];
+        this.xCount = 0;
+        this.yCount = 0;
+        this.tSize = {x: 16, y: 16};
+        this.mapSize = {x: 30, y: 15};
+        this.tilesets = [];
     }
 
     parseMap(tilesJSON) {
@@ -31,7 +31,7 @@ class MapManager {
                 }
             };
 
-            img.src = `../tiles/${tileset.image}`;
+            img.src = `../tiles2/${tileset.image}`;
             return img;
         };
 
@@ -92,12 +92,11 @@ class MapManager {
     }
 
 
+
     draw(ctx) {
         if (!this.imgLoaded || !this.jsonLoaded) {
             setTimeout(() => this.draw(ctx), 100);
         } else {
-            const canvasWidth = ctx.canvas.width;
-            const canvasHeight = ctx.canvas.height;
 
             if (this.tLayer.length === 0) {
                 for (let id = 0; id < this.mapData.layers.length; id++) {
@@ -108,13 +107,7 @@ class MapManager {
                 }
             }
 
-
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = this.mapSize.x;
-            tempCanvas.height = this.mapSize.y;
-            const tempCtx = tempCanvas.getContext('2d');
-
-            for (let j = 0; j < this.tLayer.length; j++) {
+            for(let j = 0; j < this.tLayer.length; j++) {
                 for (let i = 0; i < this.tLayer[j].data.length; i++) {
                     if (this.tLayer[j].data[i] !== 0) {
                         const tile = this.getTile(this.tLayer[j].data[i]);
@@ -122,17 +115,49 @@ class MapManager {
                         const pY = Math.floor(i / this.xCount) * this.tSize.y;
 
                         if (tile.img instanceof HTMLImageElement) {
-                            tempCtx.drawImage(tile.img, tile.px, tile.py, this.tSize.x, this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
+                            ctx.drawImage(tile.img, tile.px, tile.py, this.tSize.x, this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
                         } else {
                             console.error("Invalid tile.img type:", tile.img);
                         }
                     }
                 }
             }
-
-            ctx.drawImage(tempCanvas, 0, 0, canvasWidth, canvasHeight);
         }
     }
+
+
+
+    //  parseEntities() {
+    //     if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
+    //         setTimeout(function () { mapManager.parseEntities(); }, 100);
+    //     } else
+    //         for (let j = 0; j < this.mapData.layers.length; j++)
+    //
+    //             if(this.mapData.layers[j].type === 'objectgroup') {
+    //                 let entities = this.mapData.layers[j];
+    //
+    //                 for (let i = 0; i < entities.objects.length; i++) {
+    //                     let e = entities.objects[i];
+    //                     try {
+    //                         let obj = Object.create(gameManager.factory[e.type]);
+    //
+    //                         obj.name = e.name;
+    //                         obj.pos_x = e.x;
+    //                         obj.pos_y = e.y;
+    //                         obj.size_x = e.width;
+    //                         obj.size_y = e.height;
+    //
+    //                         gameManager.entities.push(obj);
+    //                         if(obj.name === "player")
+    //
+    //                             gameManager.initPlayer(obj);
+    //                     } catch (ex) {
+    //                         console.log("Error while creating: [" + e.gid + "] " + e.type +
+    //                             ", " + ex);
+    //                     }
+    //                 }
+    //             }
+    // }
 
 
 }

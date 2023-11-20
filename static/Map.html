@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/Map.css">
 </head>
 <body>
-<canvas id="canvasId" width="960" height="480"></canvas>
+<canvas id="canvasId" width="960" height="960"></canvas>
 <div id="result"></div>
 
 <script src="../src/MapManager.js"></script>
@@ -15,7 +15,7 @@
     let canvas = document.getElementById("canvasId");
     let ctx = canvas.getContext("2d");
     const mapManager = new MapManager();
-    mapManager.loadMap("../tiles/level.json");
+    mapManager.loadMap("../tiles2/platform.json");
     //mapManager.draw(ctx);
 </script>
 
