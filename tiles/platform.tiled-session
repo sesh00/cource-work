@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "platform.json",
     "expandedProjectPaths": [
         "."
     ],
@@ -28,7 +28,7 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 488,
+                "x": 486.66666666666663,
                 "y": 390.66666666666674
             }
         },
@@ -106,11 +106,12 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
+        "platform.json"
     ],
     "project": "platform.tiled-project",
     "recentFiles": [
-        "platform.xml",
         "platform.json",
+        "platform.xml",
         "sky.xml",
         "platform.tmx",
         "sky2.xml",
