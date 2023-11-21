@@ -10,6 +10,7 @@
 <div id="result"></div>
 
 <script src="../src/MapManager.js"></script>
+<script src="../src/SpriteManager.js"></script>
 
 <script>
     let canvas = document.getElementById("canvasId");
@@ -21,9 +22,6 @@
     spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
     mapManager.parseEntities();
     mapManager.draw(ctx);
-
-
-    //mapManager.draw(ctx);
 </script>
 
 </body>
