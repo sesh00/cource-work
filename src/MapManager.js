@@ -30,7 +30,7 @@ class MapManager {
                 this.imgLoadCount++;
                 if (this.imgLoadCount === this.mapData.tilesets.length) {
                     this.imgLoaded = true;
-                    this.draw(ctx);
+                    //this.draw(ctx);
                 }
             };
 

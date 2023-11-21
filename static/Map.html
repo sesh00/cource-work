@@ -15,7 +15,14 @@
     let canvas = document.getElementById("canvasId");
     let ctx = canvas.getContext("2d");
     const mapManager = new MapManager();
+    const spriteManager = new SpriteManager();
+
     mapManager.loadMap("../tiles/platform.json");
+    spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
+    mapManager.parseEntities();
+    mapManager.draw(ctx);
+
+
     //mapManager.draw(ctx);
 </script>
 

@@ -16,7 +16,9 @@ export class Player extends Entity {
         this.speed = 1;
     }
 
-    draw(ctx) { }
+    draw(ctx) {
+
+    }
 
     update() { }
 
