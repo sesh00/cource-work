@@ -3,168 +3,93 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level.json",
+    "activeFile": "platform.json",
     "expandedProjectPaths": [
         "."
     ],
     "file.lastUsedOpenFilter": "Все файлы (*)",
     "fileStates": {
-        "": {
-            "scaleInDock": 1
-        },
-        "characters": {
-            "dynamicWrapping": true,
-            "scaleInDock": 1
-        },
         "characters.tsx": {
-            "scaleInDock": 1.5,
-            "scaleInEditor": 1
-        },
-        "l.json": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 240.1893384424659,
-                "y": 120.09466922123295
-            }
-        },
-        "level.json": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 227.7470979375634,
-                "y": 107.65242871633043
-            }
-        },
-        "level.json#characters": {
-            "dynamicWrapping": false,
-            "scaleInDock": 1
-        },
-        "level.json#sheet": {
-            "scaleInDock": 1
-        },
-        "level.json#sky": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
-        "level.tmx": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 227.20613095908936,
-                "y": 107.11146173785642
-            }
-        },
-        "level.tmx#characters": {
-            "scaleInDock": 1
-        },
-        "level.tmx#sheet": {
-            "scaleInDock": 1
-        },
-        "level.tmx#sky": {
-            "scaleInDock": 1
-        },
-        "level1.json": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 3,
-            "viewCenter": {
-                "x": 239.9188549532289,
-                "y": 119.82418573199593
-            }
-        },
-        "level1.tmx": {
-            "expandedObjectLayers": [
-                4
-            ],
-            "scale": 1.8485416666666665,
-            "selectedLayer": 3,
-            "viewCenter": {
-                "x": 253.71351290431647,
-                "y": 201.2397159923363
-            }
-        },
-        "lv.tmj": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 3,
-            "viewCenter": {
-                "x": 109.27532965175251,
-                "y": 202.32164994928434
-            }
-        },
-        "map.json": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 236.94353657162176,
-                "y": 116.84886735038882
-            }
-        },
-        "map.json#characters": {
-            "scaleInDock": 1
-        },
-        "map.tmx": {
-            "scale": 1.8485416666666665,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 227.20613095908936,
-                "y": 107.11146173785642
-            }
-        },
-        "map.tmx#characters": {
-            "scaleInDock": 1
-        },
-        "map.tmx#sheet": {
-            "scaleInDock": 1
-        },
-        "map.tmx#sky": {
-            "scaleInDock": 1
-        },
-        "sheet.tsx": {
-            "scaleInDock": 1.5,
+        "characters.xml": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "platform.json": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 507.99999999999994,
+                "y": 530.6666666666667
+            }
+        },
+        "platform.json#characters": {
+            "scaleInDock": 1
+        },
+        "platform.json#sheet": {
+            "scaleInDock": 1
+        },
+        "platform.json#sky": {
+            "scaleInDock": 1
+        },
+        "platform.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 334.66666666666663,
+                "y": 530.6666666666667
+            }
+        },
+        "platform.tmx#characters": {
+            "scaleInDock": 1
+        },
+        "platform.tmx#sheet": {
+            "scaleInDock": 1
+        },
+        "platform.tmx#sky": {
+            "scaleInDock": 1
+        },
+        "sheet.xml": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 0.75
         },
         "sky.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
-        "swoosh.tsx": {
-            "scaleInDock": 1.5,
-            "scaleInEditor": 1
-        },
-        "укукукку.tsj": {
+        "sky.xml": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
-    "last.exportedFilePath": "C:/Users/sinne/WebstormProjects/course-work/tiles",
-    "last.externalTilesetPath": "C:/Users/sinne/WebstormProjects/course-work/tiles",
-    "last.imagePath": "C:/Users/sinne/WebstormProjects/course-work/tiles",
+    "last.exportedFilePath": "C:/Users/sinne/WebstormProjects/course-work/tiles2",
+    "last.imagePath": "C:/Users/sinne/WebstormProjects/course-work/tiles2",
+    "map.height": 15,
     "map.lastUsedExportFilter": "JSON map-файлы (*.tmj *.json)",
     "map.lastUsedFormat": "json",
     "map.renderOrder": null,
-    "map.tileHeight": 16,
-    "map.tileWidth": 16,
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 15,
     "openFiles": [
-        "level.json"
+        "platform.json"
     ],
     "project": "platform.tiled-project",
     "recentFiles": [
-        "level.json",
-        "level.tmx",
-        "map.tmx",
-        "map.json",
-        "swoosh.tsx",
-        "sky.tsx",
-        "sheet.tsx",
+        "platform.json",
+        "characters.xml",
+        "platform.tmx",
+        "sheet.xml",
+        "sky.xml",
         "characters.tsx",
-        "level1.json",
-        "l.json",
-        "level1.tmx",
-        "lv.tmj"
+        "sky.tsx"
     ],
-    "tileset.lastUsedFormat": "json",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 64,
+        "width": 64
     }
 }

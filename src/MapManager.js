@@ -31,7 +31,7 @@ class MapManager {
                 }
             };
 
-            img.src = `../tiles2/${tileset.image}`;
+            img.src = `../tiles/${tileset.image}`;
             return img;
         };
 
