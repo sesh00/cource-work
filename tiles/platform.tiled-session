@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "platform.json",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -74,7 +74,6 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
-        "platform.json"
     ],
     "project": "platform.tiled-project",
     "recentFiles": [

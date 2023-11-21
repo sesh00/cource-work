@@ -2,7 +2,7 @@ class MapManager {
     constructor() {
         this.imgLoadCount = 0;
         this.imgLoaded = false;
-        this.jsonLoaded = false
+        this.jsonLoaded = false;
         this.mapData = null;
         this.tLayer = [];
         this.xCount = 0;
