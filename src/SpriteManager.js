@@ -1,4 +1,6 @@
-class SpriteManager {
+import {mapManager} from "./main.js";
+
+export default class SpriteManager {
     constructor() {
         this.image = new Image();
         this.sprites = [];

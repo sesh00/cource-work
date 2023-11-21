@@ -261,12 +261,12 @@ Script (рис. 1.1). Программирование на JavaScript подр�
        <canvas id="canvasId" width="300" height="100"
        style="border:1px solid blue;"></canvas>
        <script>
-          // Îáðàùåíèå ê canvas
+
           var canvas = document.getElementById("canvasId");
-          var ctx = canvas.getContext("2d"); // Îáðàùåíèå ê êîíòåêñòó
-          ctx.moveTo(50, 70); // Ïåðåìåùåíèå êóðñîðà
-          ctx.lineTo(100, 50); // Ñîçäàíèå ëèíèè
-          ctx.stroke(); // Îòîáðàæåíèå ëèíèè
+          var ctx = canvas.getContext("2d");
+          ctx.moveTo(50, 70);
+          ctx.lineTo(100, 50);
+          ctx.stroke();
        </script>
     </body>
 </html>
@@ -341,18 +341,18 @@ style="border:1px solid magenta;"></canvas>
         <script>
            var canvas = document.getElementById("canvasId");
            var ctx = canvas.getContext("2d");
-           canvas.width = 200; // Óñòàíîâèòü øèðèíó â 200 ïèêñåëîâ
-           canvas.height = 90; // Óñòàíîâèòü âûñîòó â 90 ïèêñåëîâ
-           ctx.strokeStyle = "green"; // Óñòàíîâèòü öâåò ëèíèè - çåëåíûé
-           ctx.fillStyle = "blue"; // Óñòàíîâèòü öâåò çàëèâêè ôèãóðû -
-           // ñèíèé
-           ctx.shadowBlur = 10; // Óñòàíîâèòü ðàçìåð òåíè - 10 ïèêñåëîâ
-           ctx.shadowColor = "brown"; // Óñòàíîâèòü öâåò òåíè -
-           // êîðè÷íåâûé
-           // Îòîáðàæåíèå ïðÿìîóãîëüíèêà (x, y, øèðèíà, âûñîòà)
+           canvas.width = 200;
+           canvas.height = 90;
+           ctx.strokeStyle = "green";
+           ctx.fillStyle = "blue";
+
+           ctx.shadowBlur = 10;
+           ctx.shadowColor = "brown";
+
+
            ctx.rect(10, 30, 80, 40);
-           ctx.fill(); // Çàïîëíèòü öâåòîì
-           ctx.stroke(); // Îòîáðàçèòü êîíòóð
+           ctx.fill();
+           ctx.stroke();
         </script>
      </body>
 </html>
@@ -422,18 +422,18 @@ Chrome, открывают панель разработчика при нажа
        <script>
           var canvas = document.getElementById("canvasId");
           var ctx = canvas.getContext("2d");
-          ctx.strokeText("Çèãçàã", 10, 10); // Íàïèñàòü òåêñò
-          ctx.stroke(); // Îòîáðàçèòü òåêñò
-          ctx.lineWidth = 10; // Óñòàíîâèòü øèðèíó ëèíèè
-          ctx.strokeStyle = "#0000ff"; // Óñòàíîâèòü öâåò ëèíèè - ñèíèé
-          var x = [40, 70, 100, 130, 160, 190]; // Ìàññèâ
+          ctx.strokeText("Çèãçàã", 10, 10);
+          ctx.stroke();
+          ctx.lineWidth = 10;
+          ctx.strokeStyle = "#0000ff";
+          var x = [40, 70, 100, 130, 160, 190];
           var y = [40, 80, 40, 80, 40, 80];
-          ctx.moveTo(10, 80); // Ïåðåìåñòèòü
-          ctx.beginPath(); // Íà÷àëî ïóòè
-          for(var i = 0; i < x.length; i++) { // Öèêë
+          ctx.moveTo(10, 80);
+          ctx.beginPath();
+          for(var i = 0; i < x.length; i++) {
              ctx.lineTo(x[i], y[i]);
           }
-          ctx.stroke(); // Îòîáðàçèòü êðèâóþ
+          ctx.stroke();
        </script>
     </body>
 </html>
@@ -491,19 +491,19 @@ Powered by TCPDF (www.tcpdf.org)
        <script>
           var canvas = document.getElementById("canvasId");
           var ctx = canvas.getContext("2d");
-          ctx.strokeText("Çèãçàã", 10, 10); // Íàïèñàòü òåêñò
-          ctx.stroke(); // Îòîáðàçèòü òåêñò
-          ctx.lineWidth = 10; // Óñòàíîâèòü øèðèíó ëèíèè
-          ctx.strokeStyle = "#0000ff"; // Óñòàíîâèòü öâåò ëèíèè - ñèíèé
-          var x = [40, 70, 100, 130, 160, 190]; // Ìàññèâ
-          var y = 80; // Ïåðåìåííàÿ y
-          ctx.moveTo(10, 80); // Ïåðåìåñòèòü
-          ctx.beginPath(); // Íà÷àëî ïóòè
-          for(var i = 0; i < x.length; i++) { // Öèêë
-             if(y > 40) y = 40; else y = 80; // Óñëîâèå
+          ctx.strokeText("Çèãçàã", 10, 10);
+          ctx.stroke();
+          ctx.lineWidth = 10;
+          ctx.strokeStyle = "#0000ff";
+          var x = [40, 70, 100, 130, 160, 190];
+          var y = 80;
+          ctx.moveTo(10, 80);
+          ctx.beginPath();
+          for(var i = 0; i < x.length; i++) {
+             if(y > 40) y = 40; else y = 80;
              ctx.lineTo(x[i], y);
           }
-          ctx.stroke(); // Îòîáðàçèòü êðèâóþ
+          ctx.stroke();
        </script>
     </body>
 </html>
@@ -533,17 +533,17 @@ Powered by TCPDF (www.tcpdf.org)
        <script>
           var canvas = document.getElementById("canvasId");
           var ctx = canvas.getContext("2d");
-          ctx.lineWidth = 5; // Óñòàíîâèòü øèðèíó ëèíèè
+          ctx.lineWidth = 5;
           function square(side, x, color) {
-             ctx.strokeStyle = color; // Óñòàíîâèòü öâåò ëèíèè - color
-             ctx.strokeRect(x, 10, side, side); // Ðèñóåì êâàäðàò ñî
-             // ñòîðîíîé side
-             ctx.stroke(); // Íàðèñîâàòü
+             ctx.strokeStyle = color;
+             ctx.strokeRect(x, 10, side, side);
+
+             ctx.stroke();
           }
-          square(15, 10, 'red'); // Êâàäðàò 15 íà 15
-          square(25, 50, 'green'); // Êâàäðàò 25 íà 25
-          square(35, 110, 'blue'); // Êâàäðàò 35 íà 35
-          square(45, 180, 'brown'); // Êâàäðàò 45 íà 45
+          square(15, 10, 'red');
+          square(25, 50, 'green');
+          square(35, 110, 'blue');
+          square(45, 180, 'brown');
        </script>
     </body>
 </html>
@@ -578,20 +578,20 @@ Powered by TCPDF (www.tcpdf.org)
        <script>
           var canvas = document.getElementById("canvasId");
           var ctx = canvas.getContext("2d");
-          ctx.lineWidth = 5; // Óñòàíîâèòü øèðèíó ëèíèè
+          ctx.lineWidth = 5;
           function square(obj) {
-              ctx.strokeStyle = obj.color; // Óñòàíîâèòü öâåò ëèíèè - color
-              ctx.strokeRect(obj.x, 10, obj.side, obj.side); // Ðèñóåì
-              // êâàäðàò
-              ctx.stroke(); // Íàðèñîâàòü
+              ctx.strokeStyle = obj.color;
+              ctx.strokeRect(obj.x, 10, obj.side, obj.side);
+
+              ctx.stroke();
           }
-          var s = {side:15, x:10, color:'red'}; // Ñîçäàíèå îáúåêòà
-          square(s); // Èñïîëüçîâàíèå îáúåêòà
-          square({side:25, x:50, color:'green'}); // Ñîçäàíèå è
-          // èñïîëüçîâàíèå îáúåêòà
+          var s = {side:15, x:10, color:'red'};
+          square(s);
+          square({side:25, x:50, color:'green'});
+
           square({"side":35, "x":110, "color":'blue'});
           square(Object.create({side:45, x:180, color:'brown'}));
-          // Ïåðå÷èñëåííûå ñïîñîáû ñîçäàíèÿ îáúåêòîâ èäåíòè÷íû
+
        </script>
     </body>
 </html>
@@ -659,11 +659,11 @@ square({"side":35, "x":110, "color":'blue'});
      При этом в подключаемом файле будут доступны все
 переменные, объявленные в подключающей HTMLстра
 нице.
-var image = new Image(); // Ñîçäàíèå îáúåêòà èçîáðàæåíèÿ
-image.onload = function () { // Ñîõðàíåíèå ññûëêè íà ôóíêöèþ
-     ctx.drawImage(image, 10, 10, 80, 80); // Ïðîðèñîâêà èçîáðàæåíèÿ
+var image = new Image();
+image.onload = function () {
+     ctx.drawImage(image, 10, 10, 80, 80);
 };
-image.src = "smile.jpg"; // Óêàçàíèå àäðåñà èçîáðàæåíèÿ
+image.src = "smile.jpg";
    Для корректной работы приведенный текст JavaScript
 должен быть записан в файл image.js, а файл должен на
 ходиться в той же папке, что и исходная HTMLстраница.
@@ -697,18 +697,17 @@ image.src = "c.jpg";
 
      Для создания анимации достаточно изменить код в
 image.js:
-var image = new Image(); // Ñîçäàíèå îáúåêòà èçîáðàæåíèÿ
-image.onload = function () { // Ñîõðàíåíèå ññûëêè íà ôóíêöèþ
-     setInterval(move, 100); // Ñîçäàíèå èíòåðâàëà â 100 ìñåê äëÿ
+var image = new Image();
+image.onload = function () {
+     setInterval(move, 100);
      çàïóñêà move
 };
-// Óêàçàíèå àäðåñà èçîáðàæåíèÿ
 image.src = 'http://media.tumblr.com/smile.jpg';
-var x = 10; // Êîîðäèíàòà x èçîáðàæåíèÿ
-function move() { // Ôóíêöèÿ, âûçûâàåìàÿ ïî òàéìåðó
-     if(x < 200) x += 5; else x = 10; // Èçìåíåíèå êîîðäèíàòû x
-     ctx.clearRect(0, 0, canvas.width, canvas.height); // Î÷èñòèòü õîëñò
-     ctx.drawImage(image, x, 10, 80, 80); // Ïðîðèñîâêà èçîáðàæåíèÿ
+var x = 10;
+function move() {
+     if(x < 200) x += 5; else x = 10;
+     ctx.clearRect(0, 0, canvas.width, canvas.height);
+     ctx.drawImage(image, x, 10, 80, 80);
 }
      Отличия данного JavaScript начинаются с функции
 onload, в которой вызывается
@@ -742,25 +741,24 @@ y, width, height), которая обеспечивает очистку canvas
 поддерживает множество преобразований. Наиболее ча
 сто используемые: поворот, изменение масштаба по одной
 из координат, смещение и т. п.
-var image = new Image(); // Ñîçäàíèå îáúåêòà èçîáðàæåíèÿ
-image.onload = function () { // Ñîõðàíåíèå ññûëêè íà ôóíêöèþ
-     ctx.save(); // Ñîõðàíåíèå õàðàêòåðèñòèê õîëñòà
-     // Ñìåùåíèå â èñõîäíîé ñèñòåìå êîîðäèíàò
+var image = new Image();
+image.onload = function () {
+     ctx.save();
+
      ctx.translate(40, -10);
-     ctx.rotate(30 * Math.PI / 180); // Ïîâîðîò íà 30 ãðàäóñîâ
-     ctx.scale(0.3, 0.3); // Óìåíüøåíèå äî 30%
-     ctx.drawImage(image, 0, 0); // Îòîáðàæåíèå
-     ctx.restore(); // Âîññòàíîâëåíèå õàðàêòåðèñòèê õîëñòà
-     // Îòîáðàæåíèå äóáëèêàòà ðèñóíêà
-     ctx.save(); // Ñîõðàíåíèå õàðàêòåðèñòèê õîëñòà
-     ctx.rotate(-30 * Math.PI / 180); // Ïîâîðîò íà -30 ãðàäóñîâ
-     // Ñìåùåíèå â ñèñòåìå êîîðäèíàò, ïîâåðíóòîé íà -30 ãðàäóñîâ
+     ctx.rotate(30 * Math.PI / 180);
+     ctx.scale(0.3, 0.3);
+     ctx.drawImage(image, 0, 0);
+     ctx.restore();
+
+     ctx.save();
+     ctx.rotate(-30 * Math.PI / 180);
+
      ctx.translate(100, 100);
-     ctx.scale(0.4, 0.4); // Óìåíüøåíèå äî 40%
-     ctx.drawImage(image, 0, 0); // Îòîáðàæåíèå
-     ctx.restore(); // Âîññòàíîâëåíèå õàðàêòåðèñòèê õîëñòà
+     ctx.scale(0.4, 0.4);
+     ctx.drawImage(image, 0, 0);
+     ctx.restore();
 };
-// Óêàçàíèå àäðåñà èçîáðàæåíèÿ
 image.src = 'smile.jpg';
    В приведенном примере наибольший интерес представ
 ляет функция, сохраняемая в onload переменной image,
@@ -1055,24 +1053,21 @@ JSON формируется в визуальном редакторе и дан
 той (или менеджера карты) будет называться mapManager.
 Существует множество способов создать такой объект в
 JavaScript, например:
-var mapManager = {}; // Â ôèãóðíûõ ñêîáêàõ ïåðå÷èñëèòü ïîëÿ è
-// ìåòîäû
+var mapManager = {};
      Или:
 var mapManager = new Object();
-// Çàòåì äîáàâèòü íåîáõîäèìûå ïîëÿ è ìåòîäû
      Или:
 var mapManager = Object.create({});
-// Â ôèãóðíûõ ñêîáêàõ ïåðå÷èñëèòü ïîëÿ è ìåòîäû
     Рассмотрим, какие поля являются необходимыми для
 менеджера карты.
 var mapManager = {
-    mapData: null, // ïåðåìåííàÿ äëÿ õðàíåíèÿ êàðòû
-    tLayer: null, // ïåðåìåííàÿ äëÿ õðàíåíèÿ ññûëêè íà áëîêè êàðòû
-    xCount: 0, // êîëè÷åñòâî áëîêîâ ïî ãîðèçîíòàëè
-    yCount: 0, // êîëè÷åñòâî áëîêîâ ïî âåðòèêàëè
-    tSize: {x: 64, y: 64}, // ðàçìåð áëîêà
-    mapSize: {x: 64, y: 64}, // ðàçìåð êàðòû â ïèêñåëàõ (âû÷èñëÿåòñÿ)
-    tilesets: new Array() // ìàññèâ îïèñàíèé áëîêîâ êàðòû
+    mapData: null,
+    tLayer: null,
+    xCount: 0,
+    yCount: 0,
+    tSize: {x: 64, y: 64},
+    mapSize: {x: 64, y: 64},
+    tilesets: new Array()
 }
 Отображение карты игры                                             29
 
@@ -1112,21 +1107,21 @@ mapSize, который содержит размеры по ширине и в�
 AJAX — возможность обновления части HTMLстраницы
 без перезагрузки страницы целиком.
 function loadMap(path) {
-    var request = new XMLHttpRequest(); // ñîçäàíèå ajax-çàïðîñà
+    var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
        if (request.readyState === 4 && request.status === 200) {
 30                                                        Глава 2
 
 
 
-          // Ïîëó÷åí êîððåêòíûé îòâåò, ðåçóëüòàò ìîæíî
+
           îáðàáàòûâàòü mapManager.parseMap(request.responseText);
           }
      };
      request.open("GET", path, true);
-     // true - îòïðàâèòü àñèíõðîííûé çàïðîñ íà path
-     // c èñïîëüçîâàíèåì ôóíêöèè GET
-     request.send(); // îòïðàâèòü çàïðîñ
+
+
+     request.send();
 }
     Функция loadMap принимает в качестве параметра
 путь (path) к файлу, который необходимо загрузить. Это
@@ -1181,46 +1176,46 @@ mapManager, а на глобальный объект window. Это одна и
 особенностей, отличающих JavaScript от других объект
 ноориентированных языков программирования.
 function parseMap(tilesJSON) {
-    this.mapData = JSON.parse(tilesJSON); // ðàçîáðàòü JSON
-    this.xCount = this.mapData.width; // ñîõðàíåíèå øèðèíû
-    this.yCount = this.mapData.height; // ñîõðàíåíèå âûñîòû
-    this.tSize.x = this.mapData.tilewidth; // ñîõðàíåíèå ðàçìåðà áëîêà
-    this.tSize.y = this.mapData.tileheight; // ñîõðàíåíèå ðàçìåðà áëîêà
-    this.mapSize.x = this.xCount * this.tSize.x; // âû÷èñëåíèå ðàçìåðà
-    // êàðòû
-    this.mapSize.y = this.yCount * this.tSize.y; // âû÷èñëåíèå ðàçìåðà
-    // êàðòû
+    this.mapData = JSON.parse(tilesJSON);
+    this.xCount = this.mapData.width;
+    this.yCount = this.mapData.height;
+    this.tSize.x = this.mapData.tilewidth;
+    this.tSize.y = this.mapData.tileheight;
+    this.mapSize.x = this.xCount * this.tSize.x;
+
+    this.mapSize.y = this.yCount * this.tSize.y;
+
     for (var i = 0; i < this.mapData.tilesets.length; i++) {
-        var img = new Image(); // ñîçäàåì ïåðåìåííóþ äëÿ õðàíåíèÿ
-        // èçîáðàæåíèé
-        img.onload = function () { // ïðè çàãðóçêå èçîáðàæåíèÿ
-            mapManager.imgLoadCount++; // óâåëè÷èâàåì ñ÷åò÷èê
+        var img = new Image();
+
+        img.onload = function () {
+            mapManager.imgLoadCount++;
             if (mapManager.imgLoadCount ===
             mapManager.mapData.tilesets.length) {
 32                                                                    Глава 2
 
 
 
-              mapManager.imgLoaded = true; // çàãðóæåíû âñå
-              // èçîáðàæåíèÿ
+              mapManager.imgLoaded = true;
+
              }
-         }; // êîíåö îïèñàíèÿ ôóíêöèè onload
-         img.src = this.mapData.tilesets[i].image; // Çàäàíèå ïóòè ê
-         // èçîáðàæåíèþ
-         var t = this.mapData.tilesets[i]; // çàáèðàåì tileset èç êàðòû
-         var ts = { // ñîçäàåì ñâîé îáúåêò tileset
-             firstgid: t.firstgid, // firstgid - ñ íåãî íà÷èíàåòñÿ íóìåðàöèÿ â
-             // data
-             image: img, // îáúåêò ðèñóíêà
-             name: t.name, // èìÿ ýëåìåíòà ðèñóíêà
+         };
+         img.src = this.mapData.tilesets[i].image;
+
+         var t = this.mapData.tilesets[i];
+         var ts = {
+             firstgid: t.firstgid,
+
+             image: img,
+             name: t.name,
              xCount: Math.floor(t.imagewidth / mapManager.tSize.x),
-             // ãîðèçîíòàëü
+
              yCount: Math.floor(t.imageheight / mapManager.tSize.y)
-             // âåðòèêàëü
-         }; // êîíåö îáúÿâëåíèÿ îáúåêòà ts
-         this.tilesets.push(ts); // ñîõðàíÿåì tileset â ìàññèâ
-     } // îêîí÷àíèå öèêëà for
-     this.jsonLoaded = true; // true, êîãäà ðàçîáðàëè âåñü json
+
+         };
+         this.tilesets.push(ts);
+     }
+     this.jsonLoaded = true;
 }
    Функция parseMap должна быть объявлена в рамках
 mapManager. Она принимает один параметр tilesJSON,
@@ -1262,9 +1257,9 @@ var img = new Image();
 щие поля:
 var mapManager = {
       ,
-    imgLoadCount: 0, // êîëè÷åñòâî çàãðóæåííûõ èçîáðàæåíèé
-    imgLoaded: false, // âñå èçîáðàæåíèÿ çàãðóæåíû (ñíà÷àëà - false)
-    jsonLoaded: false // json îïèñàíèå çàãðóæåíî (ñíà÷àëà - false)
+    imgLoadCount: 0,
+    imgLoaded: false,
+    jsonLoaded: false
 }
    На месте многоточия в mapManager находятся все пре
 дыдущие поля.
@@ -1313,41 +1308,41 @@ this.jsonLoaded = true;
 что JSON из файла успешно загружен.
    Следующая задача — отображение на холсте загружен
 ной карты.
-function draw(ctx) { // íàðèñîâàòü êàðòó â êîíòåêñòå
-    // åñëè êàðòà íå çàãðóæåíà, òî ïîâòîðèòü ïðîðèñîâêó ÷åðåç 100
-    // ìñåê
+function draw(ctx) {
+
+
     if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
          setTimeout(function () { mapManager.draw(ctx); }, 100);
 Отображение карты игры                                                        35
 
 
     } else {
-        if(this.tLayer === null) // ïðîâåðèòü, ÷òî tLayer íàñòðîåí
+        if(this.tLayer === null)
             for (var id = 0; id < this.mapData.layers.length; id++) {
-                 // ïðîõîäèì ïî âñåì layer êàðòû
+
                  var layer = this.mapData.layers[id];
-                 if (layer.type === "tilelayer") { // åñëè íå tilelayer -
-                 // ïðîïóñêàåì
+                 if (layer.type === "tilelayer") {
+
                       this.tLayer = layer;
                       break;
                  }
-            } // Îêîí÷àíèå öèêëà for
-        for (var i = 0; i < this.tLayer.data.length; i++) { // ïðîéòè ïî âñåé
-        // êàðòå
-            if (this.tLayer.data[i] !== 0) { // åñëè íåò äàííûõ - ïðîïóñêàåì
-                 var tile = this.getTile(this.tLayer.data[i]); // ïîëó÷åíèå áëîêà
-                 // ïî èíäåêñó
-                 // i ïðîõîäèò ëèíåéíî ïî ìàññèâó, xCount - äëèíà ïî õ
-                 var pX = (i % this.xCount) * this.tSize.x; // âû÷èñëÿåì õ â
-                 // ïèêñåëàõ
+            }
+        for (var i = 0; i < this.tLayer.data.length; i++) {
+
+            if (this.tLayer.data[i] !== 0) {
+                 var tile = this.getTile(this.tLayer.data[i]);
+
+
+                 var pX = (i % this.xCount) * this.tSize.x;
+
                  var pY = Math.floor(i / this.xCount) * this.tSize.y;
-                 // âû÷èñëÿåì ó
-                 // ðèñóåì â êîíòåêñò
+
+
                  ctx.drawImage(tile.img, tile.px, tile.py, this.tSize.x,
                  this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
             }
-        } // Îêîí÷àíèå öèêëà for
-    } // Îêîí÷àíèå if-else
+        }
+    }
 }
    Функция draw предназначена для отображения кар
 ты на холсте, контекст (ctx) ей передается в качестве па
@@ -1419,24 +1414,24 @@ this.tSize.x и this.tSize.y — ширина и высота блока в из
     Для корректной работы функции draw должна быть
 определена функция getTile, обеспечивающая получение
 блока по ее индексу из tilesets.
-function getTile (tileIndex) { // èíäåêñ áëîêà
-    var tile = { // îäèí áëîê
-        img: null, // èçîáðàæåíèå tileset
-        px: 0, py: 0 // êîîðäèíàòû áëîêà â tileset
+function getTile (tileIndex) {
+    var tile = {
+        img: null,
+        px: 0, py: 0
     };
     var tileset = this.getTileset(tileIndex);
-    tile.img = tileset.image; // èçîáðàæåíèå èñêîìîãî tileset
-    var id = tileIndex - tileset.firstgid; // èíäåêñ áëîêà â tileset
-    // áëîê ïðÿìîóãîëüíûé, îñòàòîê îò äåëåíèÿ íà xCount äàåò x
-    // â tileset
+    tile.img = tileset.image;
+    var id = tileIndex - tileset.firstgid;
+
+
     var x = id % tileset.xCount;
-    // îêðóãëåíèå îò äåëåíèÿ íà xCount äàåò y â tileset
+
     var y = Math.floor(id / tileset.xCount);
-    // ñ ó÷åòîì ðàçìåðà ìîæíî ïîñ÷èòàòü êîîðäèíàòû áëîêà
-    // â ïèêñåëàõ
+
+
     tile.px = x * mapManager.tSize.x;
     tile.py = y * mapManager.tSize.y;
-    return tile; // âîçâðàùàåì áëîê äëÿ îòîáðàæåíèÿ
+    return tile;
 }
    Для отображения блока необходимы изображение, его
 координаты в пикселах и размеры. Размеры блоков хра
@@ -1470,16 +1465,16 @@ return tile;
     В результате возвращается сформированный блок (tile).
     Для корректной работы функции getTile необходима
 функция getTileset.
-function getTileset(tileIndex) { // ïîëó÷åíèå áëîêà ïî èíäåêñó
+function getTileset(tileIndex) {
     for (var i = mapManager.tilesets.length - 1; i >= 0; i--)
-       // â êàæäîì tilesets[i].firstgid çàïèñàíî ÷èñëî,
-       // ñ êîòîðîãî íà÷èíàåòñÿ íóìåðàöèÿ áëîêîâ
+
+
        if (mapManager.tilesets[i].firstgid <= tileIndex) {
-           // åñëè èíäåêñ ïåðâîãî áëîêà ìåíüøå ëèáî ðàâåí èñêîìîìó,
-           // çíà÷èò ýòîò tileset è íóæåí
+
+
            return mapManager.tilesets[i];
        }
-    return null; // Âîçâðàùàåòñÿ íàéäåííûé tileset
+    return null;
 }
                                    Отображение карты игры                                 39
 
@@ -1511,7 +1506,7 @@ function getTileset(tileIndex) { // ïîëó÷åíèå áëîêà ïî èíäå�
                                    метры видимой области карты:
                                    var mapManager = {
                                           ,
-                                       // âèäèìàÿ îáëàñòü ñ êîîðäèíàòàìè ëåâîãî âåðõíåãî óãëà
+
                                        view: {x: 0, y: 0, w: 800, h: 600}
                                    }
                                       Поле view хранит координаты левого верхнего угла
@@ -1534,10 +1529,8 @@ Powered by TCPDF (www.tcpdf.org)
 расходоваться.
       В функцию draw перед вызовом ctx.crawImage необ
 ходимо добавить несколько строк кода:
-// íå ðèñóåì çà ïðåäåëàìè âèäèìîé çîíû
 if(!this.isVisible(pX, pY, this.tSize.x, this.tSize.y))
       continue;
-// ñäâèãàåì âèäèìóþ çîíó
 pX -= this.view.x;
 pY -= this.view.y;
       В первой строке вызывается функция isVisible. Она
@@ -1561,8 +1554,7 @@ pX = pX - this.view.x;
 pY = pY - this.view.y;
       Обе записи идентичны. Для корректной работы усо
 вершенствованной функции draw необходима isVisible.
-function isVisible(x, y, width, height) { // íå ðèñóåì çà ïðåäåëàìè âèäèìîé
-// çîíû
+function isVisible(x, y, width, height) {
       if (x + width < this.view.x || y + height < this.view.y ||
           x > this.view.x + this.view.w || y > this.view.y + this.view.h)
           return false;
@@ -1583,8 +1575,8 @@ true, иначе — false.
 держащую холст canvas с объявлением переменных canvas
 и ctx (по аналогии с примерами из главы 1), затем вызвать
 две функции вновь созданного mapManager:
-mapManager.loadMap("tilemap.json"); // çàãðóçèòü êàðòó
-mapManager.draw(ctx); // íàðèñîâàòü êàðòó
+mapManager.loadMap("tilemap.json");
+mapManager.draw(ctx);
     Пример работы программы приведен на рисунке 2.2.
 
 
@@ -1614,36 +1606,36 @@ mapManager.draw(ctx); // íàðèñîâàòü êàðòó
     Это такие функции, как: разбор слоя типа objectgroup,
 получение блока по его координатам на холсте, центров
 ка карты относительно заданных координат (x, y).
-function parseEntities() { // ðàçáîð ñëîÿ òèïà objectgroup
+function parseEntities() {
     if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
          setTimeout(function () { mapManager.parseEntities(); }, 100);
     } else
          for (var j = 0; j < this.mapData.layers.length; j++)
-             // ïðîñìîòð âñåõ ñëîåâ
+
     if(this.mapData.layers[j].type === 'objectgroup') {
          var entities = this.mapData.layers[j];
-         // ñëîé ñ îáúåêòàìè ñëåäóåò "ðàçîáðàòü"
+
          for (var i = 0; i < entities.objects.length; i++) {
              var e = entities.objects[i];
              try {
                  var obj = Object.create(gameManager.factory[e.type]);
-                 // â ñîîòâåòñòâèè ñ òèïîì ñîçäàåì ýêçåìïëÿð îáúåêòà
+
                  obj.name = e.name;
                  obj.pos_x = e.x;
                  obj.pos_y = e.y;
                  obj.size_x = e.width;
                  obj.size_y = e.height;
-                 // ïîìåùàåì â ìàññèâ îáúåêòîâ
+
                  gameManager.entities.push(obj);
                  if(obj.name === "player")
-                     // èíèöèàëèçèðóåì ïàðàìåòðû èãðîêà
+
                      gameManager.initPlayer(obj);
              } catch (ex) {
                  console.log("Error while creating: [" + e.gid + "] " + e.type +
-                 ", " + ex); // ñîîáùåíèå îá îøèáêå
+                 ", " + ex);
              }
-         } // Êîíåö for äëÿ îáúåêòîâ ñëîÿ objectgroup
-    } // Êîíåö if ïðîâåðêè òèïà ñëîÿ íà ðàâåíñòâî objectgroup
+         }
+    }
 }
     JSON карты может содержать не только слой tilelayer,
 но и слой objectgroup, который хранит информацию о том,
@@ -1717,7 +1709,7 @@ gameManager (глава 6), в качестве параметра задает�
 мую в качестве параметра. Доступ к консоли разработчи
 ка описан в параграфе 1.3.
 function getTilesetIdx(x, y){
-    // ïîëó÷èòü áëîê ïî êîîðäèíàòàì íà êàðòå
+
     var wX = x;
     var wY = y;
     var idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor
@@ -1734,14 +1726,14 @@ return this.tLayer.data[idx];
     Функция возвращает блок из массива data с индексом
 idx.
 function centerAt(x, y) {
-    if(x < this.view.w / 2) // Öåíòðèðîâàíèå ïî ãîðèçîíòàëè
+    if(x < this.view.w / 2)
         this.view.x = 0;
     else
     if(x > this.mapSize.x - this.view.w / 2)
         this.view.x = this.mapSize.x - this.view.w;
     else
         this.view.x = x - (this.view.w / 2);
-    if(y < this.view.h / 2) // Öåíòðèðîâàíèå ïî âåðòèêàëè
+    if(y < this.view.h / 2)
         this.view.y = 0;
     else
     if(y > this.mapSize.y - this.view.h / 2)
@@ -1863,8 +1855,8 @@ imgLoaded и jsonLoaded. Перепишите mapManager таким
 другими механизмами. Прежде всего, опишем объект,
 который будет хранить общие свойства [12], [13].
 var Entity = {
-    pos_x: 0, pos_y: 0, // ïîçèöèÿ îáúåêòà
-    size_x: 0, size_y: 0 // ðàçìåðû îáúåêòà
+    pos_x: 0, pos_y: 0,
+    size_x: 0, size_y: 0
 }
     В объекте Entity определены координаты (pos_x, pos_y)
 и размеры объекта (size_x, size_y). Рассмотрим способы
@@ -1898,8 +1890,8 @@ Entity создавать поля, хранящие числа, строки и
 возникнет существенное дублирование кода.
    Способ 2. Ручная настройка необходимых полей.
 var Entity = {
-    pos_x: 0, pos_y: 0, // ïîçèöèÿ îáúåêòà
-    size_x: 0, size_y: 0, // ðàçìåðû îáúåêòà
+    pos_x: 0, pos_y: 0,
+    size_x: 0, size_y: 0,
     createPlayer: function(lifetime) {
        var Player = Object.create(this);
        Player.lifetime = lifetime;
@@ -1924,24 +1916,24 @@ return Player;
     Способ 3. Автоматическая настройка необходимых
 полей.
 var Entity = {
-    pos_x: 0, pos_y: 0, // ïîçèöèÿ îáúåêòà
-    size_x: 0, size_y: 0, // ðàçìåðû îáúåêòà
-    extend: function (extendProto) { // ðàñøèðåíèå ñóùíîñòè
+    pos_x: 0, pos_y: 0,
+    size_x: 0, size_y: 0,
+    extend: function (extendProto) {
 50                                                                  Глава 3
 
 
 
-         var object = Object.create(this); // ñîçäàíèå íîâîãî îáúåêòà
-         for (var property in extendProto) { // äëÿ âñåõ ñâîéñòâ íîâîãî
-         // îáúåêòà
+         var object = Object.create(this);
+         for (var property in extendProto) {
+
              if (this.hasOwnProperty(property) || typeof object[property] ===
              'undefined') {
-                  // åñëè èõ íåò â ðîäèòåëüñêîì - äîáàâèòü
+
                   object[property] = extendProto[property];
              }
-         } // Êîíåö öèêëà for
+         }
          return object;
-     } // Êîíåö ôóíêöèè extend
+     }
 };
 var Player = Entity.extend({ lifetime: 100 });
     В приведенном коде описано создание двух перемен
@@ -2034,14 +2026,14 @@ var Player = Entity.extend({ lifetime: 100 });
                                    описание:
                                    var Player = Entity.extend({
                                        lifetime: 100,
-                                       move_x: 0, move_y: 0, // íàïðàâëåíèå äâèæåíèÿ
-                                       speed: 1, // ñêîðîñòü îáúåêòà
-                                       draw: function (ctx) { }, // ïðîðèñîâêà îáúåêòà
-                                       update: function () { }, // îáíîâëåíèå â öèêëå
-                                       onTouchEntity: function(obj) { }, // îáðàáîòêà âñòðå÷è
-                                       // ñ ïðåïÿòñòâèåì
-                                       kill: function() { }, // óíè÷òîæåíèå îáúåêòà
-                                       fire: function() { } // âûñòðåë
+                                       move_x: 0, move_y: 0,
+                                       speed: 1,
+                                       draw: function (ctx) { },
+                                       update: function () { },
+                                       onTouchEntity: function(obj) { },
+
+                                       kill: function() { },
+                                       fire: function() { }
                                    });
                                       В приведенном фрагменте программного кода много
                                    точием скрыта реализация конкретных функций. Следует
@@ -2065,14 +2057,14 @@ Powered by TCPDF (www.tcpdf.org)
 ван объектом:
 var Tank = Entity.extend({
      lifetime: 100,
-     move_x: 0, move_y: -1, // íàïðàâëåíèå äâèæåíèÿ
-     speed: 1, // ñêîðîñòü îáúåêòà
-     draw: function (ctx) { }, // ïðîðèñîâêà îáúåêòà
-     update: function () { }, // îáíîâëåíèå â öèêëå
-     onTouchEntity: function(obj) { }, // îáðàáîòêà âñòðå÷è
-     // ñ ïðåïÿòñòâèåì
-     kill: function() { }, // óíè÷òîæåíèå îáúåêòà
-     fire: function() { } // âûñòðåë
+     move_x: 0, move_y: -1,
+     speed: 1,
+     draw: function (ctx) { },
+     update: function () { },
+     onTouchEntity: function(obj) { },
+
+     kill: function() { },
+     fire: function() { }
 });
     С учетом особенностей реализации функции extend,
 несмотря на очень большую схожесть полей и функций,
@@ -2083,14 +2075,14 @@ var Tank = Entity.extend({
 ваться ракеты, тогда их можно реализовать с применени
 ем такого объекта:
 var Rocket = Entity.extend({
-    move_x: 0, move_y: 0, // íàïðàâëåíèå äâèæåíèÿ
-    speed: 4, // ñêîðîñòü îáúåêòà
-    draw: function (ctx) { }, // ïðîðèñîâêà îáúåêòà
-    update: function () { }, // îáíîâëåíèå â öèêëå
-    onTouchEntity: function(obj) { }, // îáðàáîòêà âñòðå÷è
-    // ñ ïðåïÿòñòâèåì
-    onTouchMap: function(idx) { }, // îáðàáîòêà âñòðå÷è ñî ñòåíîé
-    kill: function() { } // óíè÷òîæåíèå îáúåêòà
+    move_x: 0, move_y: 0,
+    speed: 4,
+    draw: function (ctx) { },
+    update: function () { },
+    onTouchEntity: function(obj) { },
+
+    onTouchMap: function(idx) { },
+    kill: function() { }
 });
    Рассмотрим отличия Rocket от Player и Tank. Кроме
 того, что скорость ее движения (speed) в 4 раза больше,
@@ -2107,8 +2099,8 @@ var Rocket = Entity.extend({
 баланса должна быть возможность какимто образом его
 восполнить. Для этого можно создать объект:
 var Bonus = Entity.extend({
-    draw: function (ctx) { }, // ïðîðèñîâêà îáúåêòà
-    kill: function() { } // óíè÷òîæåíèå îáúåêòà
+    draw: function (ctx) { },
+    kill: function() { }
 });
     Особенность данного объекта в том, что он умеет ото
 бражаться (draw) и умеет уничтожаться (kill), а вся логи
@@ -2118,33 +2110,33 @@ var Bonus = Entity.extend({
 та Player.
 function fire() {
     var r = Object.create(Rocket);
-    r.size_x = 32; // íåîáõîäèìî çàäàòü ðàçìåðû ñîçäàâàåìîìó
-    // îáúåêòó
+    r.size_x = 32;
+
     r.size_y = 32;
-    r.name = "rocket" + (++gameManager.fireNum); // èñïîëüçóåòñÿ
-    // ñ÷åò÷èê âûñòðåëîâ
+    r.name = "rocket" + (++gameManager.fireNum);
+
     r.move_x = this.move_x;
     r.move_y = this.move_y;
     switch (this.move_x + 2 * this.move_y) {
-        case -1: // âûñòðåë âëåâî
-            r.pos_x = this.pos_x - r.size_x; // ïîÿâèòüñÿ ñëåâà îò èãðîêà
+        case -1:
+            r.pos_x = this.pos_x - r.size_x;
             r.pos_y = this.pos_y;
             break;
-        case 1: // âûñòðåë âïðàâî
-            r.pos_x = this.pos_x + this.size_x; // ïîÿâèòüñÿ ñïðàâà
-            // îò èãðîêà
+        case 1:
+            r.pos_x = this.pos_x + this.size_x;
+
             r.pos_y = this.pos_y;
             break;
-        case -2: // âûñòðåë ââåðõ
+        case -2:
             r.pos_x = this.pos_x;
-            r.pos_y = this.pos_y - r.size_y; // ïîÿâèòüñÿ ñâåðõó îò èãðîêà
+            r.pos_y = this.pos_y - r.size_y;
             break;
 Отображение объектов                                                   55
 
 
-       case 2: // âûñòðåë âíèç
+       case 2:
           r.pos_x = this.pos_x;
-          r.pos_y = this.pos_y + this.size_y; // ïîÿâèòüñÿ ñíèçó îò èãðîêà
+          r.pos_y = this.pos_y + this.size_y;
           break;
        default: return;
     }
@@ -2317,10 +2309,10 @@ frames — имя объекта, а key будет последовательн
 спрайтами (или менеджера спрайтов) будет называться
 spriteManager. Рассмотрим структуру менеджера спрайтов:
 var spriteManager = {
-     image: new Image(), // ðèñóíîê ñ îáúåêòàìè
-     sprites: new Array(), // ìàññèâ îáúåêòîâ äëÿ îòîáðàæåíèÿ
-     imgLoaded: false, // èçîáðàæåíèÿ çàãðóæåíû
-     jsonLoaded: false // JSON çàãðóæåí
+     image: new Image(),
+     sprites: new Array(),
+     imgLoaded: false,
+     jsonLoaded: false
 }
     Аналогичный подход и методы по созданию менедже
 ра управления спрайтами представлены в [9], [10]. В при
@@ -2345,18 +2337,18 @@ sprites: new Array()
    Загрузка атласа изображения осуществляется с ис
 пользованием функции loadAtlas:
 function loadAtlas(atlasJson, atlasImg) {
-    var request = new XMLHttpRequest(); // ïîäãîòîâèòü çàïðîñ íà
-    // ðàçáîð àòëàñà
+    var request = new XMLHttpRequest();
+
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
-             spriteManager.parseAtlas(request.responseText); // óñïåøíî
-             // ïîëó÷èëè àòëàñ
+             spriteManager.parseAtlas(request.responseText);
+
         }
     };
-    request.open("GET", atlasJson, true); // àñèíõðîííûé çàïðîñ íà
+    request.open("GET", atlasJson, true);
     ðàçáîð àòëàñà
-    request.send(); // îòïðàâèëè çàïðîñ
-    this.loadImg(atlasImg); // çàãðóçêà èçîáðàæåíèÿ
+    request.send();
+    this.loadImg(atlasImg);
 }
     Функция loadAtlas имеет два параметра: путь к фай
 лу атласа в формате JSON (atlasJson) и путь к изображе
@@ -2388,12 +2380,12 @@ this.loadImg(atlasImg);
     Вызывается функция загрузки изображения (loadImg)
 менеджера спрайтов, в качестве параметра — путь к изоб
 ражению (atlasImg).
-function loadImg(imgName) { // çàãðóçêà èçîáðàæåíèÿ
+function loadImg(imgName) {
     this.image.onload = function () {
-       spriteManager.imgLoaded = true; // êîãäà èçîáðàæåíèå
-       // çàãðóæåíî - óñòàíîâèòü â true
+       spriteManager.imgLoaded = true;
+
     };
-    this.image.src = imgName; // äàâàéòå çàãðóçèì èçîáðàæåíèå
+    this.image.src = imgName;
 }
      Функция загрузки изображения в качестве параметра
 принимает путь к изображению imgName.
@@ -2413,16 +2405,16 @@ this.image.src = imgName;
 
    Полю src объекта image присваивается путь imgName,
 после чего JavaScript начинает загрузку изображения.
-function parseAtlas(atlasJSON) { // ðàçîáðàòü àòëàñ ñ îáúåêòàìè
+function parseAtlas(atlasJSON) {
     var atlas = JSON.parse(atlasJSON);
-    for (var name in atlas.frames) { // ïðîõîä ïî âñåì èìåíàì â frames
-        var frame = atlas.frames[name].frame; // ïîëó÷åíèå ñïðàéòà è
-        // ñîõðàíåíèå â frame
-        // ñîõðàíåíèå õàðàêòåðèñòèê frame â âèäå îáúåêòà
+    for (var name in atlas.frames) {
+        var frame = atlas.frames[name].frame;
+
+
     this.sprites.push({name: name, x: frame.x, y: frame.y, w: frame.w, h:
     frame.h});
     }
-    this.jsonLoaded = true; // êîãäà ðàçîáðàëè âåñü àòëàñ - true
+    this.jsonLoaded = true;
 }
    Функция parseAtlas в качестве параметра принимает
 атлас в формате JSON (atlasJSON). По сравнению с разбо
@@ -2459,19 +2451,19 @@ JSON. В результате программирования перечисл�
 методов менеджер спрайтов умеет загружать спрайты, но
 полезно уметь их отображать.
 function drawSprite(ctx, name, x, y) {
-    // åñëè èçîáðàæåíèå íå çàãðóæåíî, òî ïîâòîðèòü çàïðîñ ÷åðåç
-    // 100 ìñåê
+
+
     if (!this.imgLoaded || !this.jsonLoaded) {
          setTimeout(function () { spriteManager.drawSprite(ctx, name,
          x, y); }, 100);
     } else {
-         var sprite = this.getSprite(name); // ïîëó÷èòü ñïðàéò ïî èìåíè
+         var sprite = this.getSprite(name);
          if(!mapManager.isVisible(x, y, sprite.w, sprite.h))
-             return; // íå ðèñóåì çà ïðåäåëàìè âèäèìîé çîíû
-         // ñäâèãàåì âèäèìóþ çîíó
+             return;
+
          x -= mapManager.view.x;
          y -= mapManager.view.y;
-         // îòîáðàæàåì ñïðàéò íà õîëñòå
+
          ctx.drawImage(this.image, sprite.x, sprite.y, sprite.w, sprite.h, x,
          y, sprite.w, sprite.h);
     }
@@ -2518,13 +2510,13 @@ sprite.h);
 sprite.y).
     Для работы функции drawSprite необходима функция
 getSprite, обеспечивающая получение спрайта по имени.
-function getSprite(name) { // ïîëó÷èòü îáúåêò ïî èìåíè
+function getSprite(name) {
     for (var i = 0; i < this.sprites.length; i++) {
        var s = this.sprites[i];
-       if (s.name === name) // èìÿ ñîâïàëî - âåðíóòü îáúåêò
+       if (s.name === name)
        return s;
     }
-    return null; // íå íàøëè
+    return null;
 }
                                    Отображение объектов                                                  65
 
@@ -2551,16 +2543,16 @@ function getSprite(name) { // ïîëó÷èòü îáúåêò ïî èìåíè
                                    нить созданные объекты из параграфа 3.1. Например, функ
                                    ция draw объектов Player и Tank может выглядеть следую
                                    щим образом:
-                                   function draw(ctx) { // ïðîðèñîâêà îáúåêòà
+                                   function draw(ctx) {
                                        spriteManager.drawSprite(ctx, "tank_left_1", this.pos_x, this.pos_y);
                                    }
                                       Идентично может выглядеть отображение объекта
                                    Bonus.
-                                   function draw(ctx) { // ïðîðèñîâêà îáúåêòà
+                                   function draw(ctx) {
                                        spriteManager.drawSprite(ctx, "star", this.pos_x, this.pos_y);
                                    }
                                         Для Rocket:
-                                   function draw(ctx) { // ïðîðèñîâêà îáúåêòà
+                                   function draw(ctx) {
                                        spriteManager.drawSprite(ctx, "rocket_up", this.pos_x, this.pos_y);
                                    }
 
@@ -2580,8 +2572,7 @@ Powered by TCPDF (www.tcpdf.org)
     Для проверки полученной программы можно вызвать
 следующие функции:
 mapManager.loadMap("tilemap.json");
-spriteManager.loadAtlas("atlas.json", "img/tankattack.png"); // çàãðóçèòü
-// àòëàñ
+spriteManager.loadAtlas("atlas.json", "img/tankattack.png");
 mapManager.parseEntities();
 mapManager.draw(ctx);
    Вызов метода loadAtlas позволит загрузить описание
@@ -2955,17 +2946,17 @@ mouseup):
 на которые следует добавить события и соответствующим
 образом их обработать. Например:
 function onKeyDown(event) {
-    if(event.keyCode === 32) { // êëàâèøà «Ïðîáåë»
-        // Âûçîâ ôóíêöèè «âûñòðåëèòü»
+    if(event.keyCode === 32) {
+
     }
 76                                                           Глава 4
 
 
 
-     if(event.keyCode === 38) { // êëàâèøà «Ñòðåëêà ââåðõ»
-         // Âûçîâ ôóíêöèè «äâèãàòüñÿ ââåðõ»
+     if(event.keyCode === 38) {
+
      }
-     // Ðåàëèçàöèÿ îñòàëüíûõ ôóíêöèé
+
 }
    Разработчик может использовать данный подход, но
 он должен понимать, что при этом в программе условия
@@ -2974,48 +2965,49 @@ function onKeyDown(event) {
 такую раскладку, будет непросто.
    Предлагается использовать другой подход, который
 позволит не только сопоставить коды клавиш действиям,
+позволит не только сопоставить коды клавиш действиям,
 но и при необходимости изменить их. В таком случае ме
 неджер событий может выглядеть следующим образом:
 var eventsManager = {
-    bind: [], // ñîïîñòàâëåíèå êëàâèø äåéñòâèÿì
-    action: [], // äåéñòâèÿ
-    setup: function (canvas) { // íàñòðîéêà ñîïîñòàâëåíèÿ
-        this.bind[87] = 'up'; // w  äâèãàòüñÿ ââåðõ
-        this.bind[65] = 'left'; // a  äâèãàòüñÿ âëåâî
-        this.bind[83] = 'down'; // s  äâèãàòüñÿ âíèç
-        this.bind[68] = 'right'; // d  äâèãàòüñÿ âïðàâî
-        this.bind[32] = 'fire'; // ïðîáåë  âûñòðåëèòü
-        // êîíòðîëü ñîáûòèé «ìûøè»
+    bind: [],
+    action: [],
+    setup: function (canvas) {
+        this.bind[87] = 'up';
+        this.bind[65] = 'left';
+        this.bind[83] = 'down';
+        this.bind[68] = 'right';
+        this.bind[32] = 'fire';
+
         canvas.addEventListener("mousedown", this.onMouseDown);
         canvas.addEventListener("mouseup", this.onMouseUp);
-        // êîíòðîëü ñîáûòèé êëàâèàòóðû
+
         document.body.addEventListener("keydown", this.onKeyDown);
         document.body.addEventListener("keyup", this.onKeyUp);
     },
-    onMouseDown: function (event) { // íàæàòèå íà êëàâèøó «ìûøè»
+    onMouseDown: function (event) {
     eventsManager.action["fire"] = true;
     },
-    onMouseUp: function (event) { // îòïóñòèëè êëàâèøó «ìûøè»
+    onMouseUp: function (event) {
     eventsManager.action["fire"] = false;
     },
-    onKeyDown: function (event) { // íàæàëè íà êíîïêó
-    // íà êëàâèàòóðå, ïðîâåðèëè, åñòü ëè ñîïîñòàâëåíèå äåéñòâèþ
+    onKeyDown: function (event) {
+
     äëÿ ñîáûòèÿ ñ êîäîì keyCode
 Взаимодействие с пользователем                                        77
 
 
      var action = eventsManager.bind[event.keyCode];
-     if (action) // ïðîâåðêà íà action === true
-         eventsManager.action[action] = true; // ñîãëàñèëèñü
-         // âûïîëíÿòü äåéñòâèå
+     if (action)
+         eventsManager.action[action] = true;
+
      },
-     onKeyUp: function (event) { // îòïóñòèëè êíîïêó íà êëàâèàòóðå
-     // ïðîâåðèëè, åñòü ëè ñîïîñòàâëåíèå äåéñòâèþ äëÿ ñîáûòèÿ
-     // ñ êîäîì keyCode
-     var action = eventsManager.bind[event.keyCode]; // ïðîâåðèëè
-     // íàëè÷èå äåéñòâèÿ
-     if (action) // ïðîâåðêà íà action === true
-         eventsManager.action[action] = false; // îòìåíèëè äåéñòâèå
+     onKeyUp: function (event) {
+
+
+     var action = eventsManager.bind[event.keyCode];
+
+     if (action)
+         eventsManager.action[action] = false;
      }
 };
      Аналогичный подход и методы по созданию менедже
@@ -3069,8 +3061,8 @@ canvas.addEventListener("mousedown", this.onMouseDown);
                                       Содержимое функции onKeyDown:
                                    var action = eventsManager.bind[event.keyCode];
                                    if (action)
-                                         eventsManager.action[action] = true; // ñîãëàñèëèñü âûïîëíÿòü
-                                         // äåéñòâèå
+                                         eventsManager.action[action] = true;
+
                                        Создается временная переменная action, в которую за
                                    писывается значение, хранящееся в массиве bind для кода
                                    event.keyCode. Затем проверяется, что action существует
@@ -3203,28 +3195,28 @@ JavaScript, например:
        <script>
          var canvas = document.getElementById("canvasId");
          var ctx = canvas.getContext("2d");
-         var pos = {x:0, y:0}; // êîîðäèíàòû êâàäðàòà
+         var pos = {x:0, y:0};
          ctx.strokeStyle = "#f00";
          function draw() {
-             ctx.clearRect(0, 0, canvas.width, canvas.height); // î÷èñòèòü
-             ctx.strokeRect(pos.x, pos.y, 20, 20); // êâàäðàò
-             ctx.stroke(); // íàðèñîâàòü
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             ctx.strokeRect(pos.x, pos.y, 20, 20);
+             ctx.stroke();
          }
          function update() {
              if(pos.x < canvas.width - 20)
-                 pos.x += 4; // ïðÿìîëèíåéíîå äâèæåíèå âïðàâî
+                 pos.x += 4;
              else
-                 pos.x = 0; // ñáðîñ êîîðäèíàòû x
+                 pos.x = 0;
              if(pos.y < canvas.height - 20)
-                 pos.y++; // ïðÿìîëèíåéíîå äâèæåíèå âíèç
+                 pos.y++;
              else
-                 pos.y = 0; // ñáðîñ êîîðäèíàòû y
+                 pos.y = 0;
 Реализация логики поведения объектов                              83
 
 
-             draw(); // íàðèñîâàòü îáúåêò
+             draw();
           }
-          setInterval(update, 100); // âûçîâ update êàæäûå 100 ìñåê
+          setInterval(update, 100);
        </script>
     </body>
 </html>
@@ -3287,26 +3279,26 @@ setInterval(update, 100);
        <script>
          var canvas = document.getElementById("canvasId");
          var ctx = canvas.getContext("2d");
-         var pos = {x:20, y:0, dx:0, dy:0}; // êîîðäèíàòû, ñêîðîñòè
+         var pos = {x:20, y:0, dx:0, dy:0};
          ctx.strokeStyle = "#f00";
          function draw() {
-             ctx.clearRect(0, 0, canvas.width, canvas.height); // î÷èñòèòü
-             ctx.strokeRect(pos.x, pos.y, 20, 20); // êâàäðàò
-             ctx.stroke(); // íàðèñîâàòü
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             ctx.strokeRect(pos.x, pos.y, 20, 20);
+             ctx.stroke();
          }
          function update() {
              if(pos.y < canvas.height - 20) {
 Реализация логики поведения объектов                              85
 
 
-                 pos.y += pos.dy; // äâèæåíèå âíèç
-                 pos.dy += 0.4; // óñêîðåíèå
+                 pos.y += pos.dy;
+                 pos.dy += 0.4;
               }
               else
-                 pos.y = pos.dy = 0; // ñáðîñ â 0
-              draw(); // íàðèñîâàòü îáúåêò
+                 pos.y = pos.dy = 0;
+              draw();
           }
-          setInterval(update, 100); // âûçîâ update êàæäûå 100 ìñåê
+          setInterval(update, 100);
        </script>
     </body>
 </html>
@@ -3358,35 +3350,35 @@ pos.dy += 0.4;
        <script>
           var canvas = document.getElementById("canvasId");
           var ctx = canvas.getContext("2d");
-          var pos = {x:20, y:320, dx:5, dy:-15}; // êîîðäèíàòû, ñêîðîñòè
+          var pos = {x:20, y:320, dx:5, dy:-15};
           ctx.strokeStyle = "#f00";
           function draw() {
-             ctx.arc(pos.x, pos.y, 10, 0, Math.PI*2); // îêðóæíîñòü
-             ctx.stroke(); // íàðèñîâàòü
+             ctx.arc(pos.x, pos.y, 10, 0, Math.PI*2);
+             ctx.stroke();
           }
           function update() {
              if(pos.x < canvas.width - 20)
-                 pos.x += pos.dx; // äâèæåíèå âïðàâî
+                 pos.x += pos.dx;
              else
                  pos.x = 20;
 Реализация логики поведения объектов                                 87
 
 
              if(pos.y < canvas.height - 20) {
-                 pos.y += pos.dy; // äâèæåíèå âíèç
-                 pos.dy += 0.4; // óñêîðåíèå
+                 pos.y += pos.dy;
+                 pos.dy += 0.4;
              }
              else {
                  pos.y = 320;
-                 pos.dy = -15; // ñáðîñ â 0
+                 pos.dy = -15;
                  pos.x = 20;
                  ctx.clearRect(0, 0, canvas.width, canvas.height);
-                 // î÷èñòèòü
-                 ctx.beginPath(); // íà÷àòü ðèñîâàòü ñ íà÷àëà
+
+                 ctx.beginPath();
              }
-             draw(); // íàðèñîâàòü îáúåêò
+             draw();
           }
-          setInterval(update, 100); // âûçîâ update êàæäûå 100 ìñåê
+          setInterval(update, 100);
        </script>
     </body>
 </html>
@@ -3471,12 +3463,12 @@ ctx.beginPath();
        <script>
          var canvas = document.getElementById("canvasId");
          var ctx = canvas.getContext("2d");
-         var pos = {x:20, y:320, dx:4, dy:-15, imp:-15}; // êîîðäèíàòû,
-         // ñêîðîñòè, èìïóëüñ
+         var pos = {x:20, y:320, dx:4, dy:-15, imp:-15};
+
          ctx.strokeStyle = "#f00";
          function draw() {
-             ctx.arc(pos.x, pos.y, 10, 0, Math.PI*2); // îêðóæíîñòü
-             ctx.stroke(); // íàðèñîâàòü
+             ctx.arc(pos.x, pos.y, 10, 0, Math.PI*2);
+             ctx.stroke();
          }
 90                                                               Глава 5
 
@@ -3484,28 +3476,28 @@ ctx.beginPath();
 
           function update() {
              if(pos.x < canvas.width - 20) {
-                 pos.x += pos.dx; // äâèæåíèå âíèç
+                 pos.x += pos.dx;
              }
              else
                  pos.x = 20;
              if(pos.y < canvas.height - 20) {
-                 pos.y += pos.dy; // äâèæåíèå
-                 pos.dy += 0.4; // óñêîðåíèå
+                 pos.y += pos.dy;
+                 pos.dy += 0.4;
              } else
-             if(Math.abs(pos.imp) > 0.01) { // ïðîâåðêà èìïóëüñà
-                 pos.imp = pos.dy = pos.imp / 2; // óìåíüøåíèå
-                 // èìïóëüñà è îòñêîê
-                 pos.y += pos.dy; // äâèæåíèå
+             if(Math.abs(pos.imp) > 0.01) {
+                 pos.imp = pos.dy = pos.imp / 2;
+
+                 pos.y += pos.dy;
              }
              else {
                  pos = {x:20, y:320, dx:4, dy:-15, imp:-15};
                  ctx.clearRect(0, 0, canvas.width, canvas.height);
-                 // î÷èñòèòü
-                 ctx.beginPath(); // íà÷àòü ðèñîâàòü ñ íà÷àëà
+
+                 ctx.beginPath();
              }
-             draw(); // íàðèñîâàòü îáúåêò
+             draw();
           }
-          setInterval(update, 100); // âûçîâ update êàæäûå 100 ìñåê
+          setInterval(update, 100);
        </script>
     </body>
 </html>
@@ -3576,36 +3568,36 @@ Manager).
 var physicManager = {
     update: function (obj){
        if(obj.move_x === 0 && obj.move_y === 0)
-           return "stop"; // ñêîðîñòè äâèæåíèÿ íóëåâûå
+           return "stop";
 
        var newX = obj.pos_x + Math.floor(obj.move_x * obj.speed);
        var newY = obj.pos_y + Math.floor(obj.move_y * obj.speed);
 
-       // àíàëèç ïðîñòðàíñòâà íà êàðòå ïî íàïðàâëåíèþ äâèæåíèÿ
+
        var ts = mapManager.getTilesetIdx(newX + obj.size_x / 2,
        newY + obj.size_y / 2);
-       var e = this.entityAtXY(obj, newX, newY); // îáúåêò íà ïóòè
-       if(e !== null && obj.onTouchEntity) // åñëè åñòü êîíôëèêò
-           obj.onTouchEntity(e); // ðàçáîð êîíôëèêòà âíóòðè îáúåêòà
-       if(ts !== 7 && obj.onTouchMap) // åñòü ïðåïÿòñòâèå
-           obj.onTouchMap(ts); // ðàçáîð êîíôëèêòà ñ ïðåïÿòñòâèåì
-           // âíóòðè îáúåêòà
+       var e = this.entityAtXY(obj, newX, newY);
+       if(e !== null && obj.onTouchEntity)
+           obj.onTouchEntity(e);
+       if(ts !== 7 && obj.onTouchMap)
+           obj.onTouchMap(ts);
 
-       if(ts === 7 && e === null) { // ïåðåìåùàåì îáúåêò íà ñâîáîäíîå
-       // ìåñòî
+
+       if(ts === 7 && e === null) {
+
            obj.pos_x = newX;
            obj.pos_y = newY;
        } else
-           return "break"; // äàëüøå äâèãàòüñÿ íåëüçÿ
+           return "break";
 
-        return "move"; // äâèãàåìñÿ
+        return "move";
      },
-     entityAtXY: function(obj, x, y) { // ïîèñê îáúåêòà ïî êîîðäèíàòàì
+     entityAtXY: function(obj, x, y) {
         for(var i = 0; i < gameManager.entities.length; i++) {
-           var e = gameManager.entities[i]; // âñå îáúåêòû êàðòû
-           if(e.name !== obj.name) { // èìÿ íå ñîâïàäàåò (èìåíà
-           // óíèêàëüíû)
-               if (x + obj.size_x < e.pos_x || // íå ïåðåñåêàþòñÿ
+           var e = gameManager.entities[i];
+           if(e.name !== obj.name) {
+
+               if (x + obj.size_x < e.pos_x ||
                    y + obj.size_y < e.pos_y ||
                    x > e.pos_x + e.size_x ||
                    y > e.pos_y + e.size_y)
@@ -3613,10 +3605,10 @@ var physicManager = {
 Реализация логики поведения объектов                         93
 
 
-                return e; // íàéäåí îáúåêò
+                return e;
              }
-         } // êîíåö öèêëà for
-         return null; // îáúåêò íå íàéäåí
+         }
+         return null;
      }
 };
     Менеджер физики объектов содержит две функции:
@@ -3772,7 +3764,7 @@ Entity для объекта Rocket. При этом предполагаетс�
 имя объекта Player равно «player», имена объектов Tank
 равно «enemy», за которым следует число, имена объек
 тов Rocket равно «rocket», за которым следует число.
-function onTouchEntity(obj) { // îáðàáîòêà âñòðå÷è ñ ïðåïÿòñòâèåì
+function onTouchEntity(obj) {
     if(obj.name.match(/enemy[\d*]/) || obj.name.match(/player/) ||
         obj.name.match(/rocket[\d*]/)) {
         obj.kill();
@@ -3839,13 +3831,13 @@ function onTouchMap(idx) {
 загрузку всех необходимых ресурсов, хранение и управ
 ление всеми объектами игры, регулярное обновление и
 отображение пользователю игрового мира.
-var gameManager = { // ìåíåäæåð èãðû
-    factory: {}, // ôàáðèêà îáúåêòîâ íà êàðòå
-    entities: [], // îáúåêòû íà êàðòå
-    fireNum: 0, // èäåíòèôèêàòîð âûñòðåëà
-    player: null, // óêàçàòåëü íà îáúåêò èãðîêà
-    laterKill: [], // îòëîæåííîå óíè÷òîæåíèå îáúåêòîâ
-    initPlayer: function(obj) { // èíèöèàëèçàöèÿ èãðîêà
+var gameManager = {
+    factory: {},
+    entities: [],
+    fireNum: 0,
+    player: null,
+    laterKill: [],
+    initPlayer: function(obj) {
         this.player = obj;
     },
     kill: function(obj) {
@@ -3947,32 +3939,32 @@ this.entities[e].draw(ctx);
 
     Вызывается команда отображения (draw) для каждо
 го объекта (entities[e]) карты.
-function update() { // îáíîâëåíèå èíôîðìàöèè
+function update() {
     if(this.player === null)
         return;
-    // ïî óìîë÷àíèþ èãðîê íèêóäà íå äâèãàåòñÿ
+
     this.player.move_x = 0;
     this.player.move_y = 0;
-    // ïîéìàëè ñîáûòèå - îáðàáàòûâàåì
+
     if (eventsManager.action["up"]) this.player.move_y = -1;
     if (eventsManager.action["down"]) this.player.move_y = 1;
     if (eventsManager.action["left"]) this.player.move_x = -1;
     if (eventsManager.action["right"]) this.player.move_x = 1;
-    // ñòðåëÿåì
+
     if (eventsManager.action["fire"]) this.player.fire();
-    // îáíîâëåíèå èíôîðìàöèè ïî âñåì îáúåêòàì íà êàðòå
+
     this.entities.forEach(function(e) {
-        try { // çàùèòà îò îøèáîê ïðè âûïîëíåíèè update
+        try {
             e.update();
         } catch(ex) {}
     });
-    // óäàëåíèå âñåõ îáúåêòîâ, ïîïàâøèõ â laterKill
+
     for(var i = 0; i < this.laterKill.length; i++) {
         var idx = this.entities.indexOf(this.laterKill[i]);
         if(idx > -1)
-            this.entities.splice(idx, 1); // óäàëåíèå èç ìàññèâà 1 îáúåêòà
+            this.entities.splice(idx, 1);
     };
-    if(this.laterKill.length > 0) // î÷èñòêà ìàññèâà laterKill
+    if(this.laterKill.length > 0)
         this.laterKill.length = 0;
     mapManager.draw(ctx);
     mapManager.centerAt(this.player.pos_x, this.player.pos_y);
@@ -4050,10 +4042,10 @@ var idx = this.entities.indexOf(this.laterKill[i]);
                                    последовательности, для этого должна быть вызвана функ
                                    ция загрузки (loadAll).
                                    function loadAll() {
-                                       mapManager.loadMap("tilemap.json"); // çàãðóçêà êàðòû
+                                       mapManager.loadMap("tilemap.json");
                                        spriteManager.loadAtlas("atlas.json", "img/tankattack.png");
-                                       // çàãðóçêà àòëàñà
-                                       gameManager.factory['Player'] = Player; // èíèöèàëèçàöèÿ ôàáðèêè
+
+                                       gameManager.factory['Player'] = Player;
                                        gameManager.factory['Tank'] = Tank;
                                        gameManager.factory['Bonus'] = Bonus;
 
@@ -4064,9 +4056,9 @@ Powered by TCPDF (www.tcpdf.org)
 
 
     gameManager.factory['Rocket'] = Rocket;
-    mapManager.parseEntities(); // ðàçáîð ñóùíîñòåé êàðòû
-    mapManager.draw(ctx); // îòîáðàçèòü êàðòó
-    eventsManager.setup(canvas); // íàñòðîéêà ñîáûòèé
+    mapManager.parseEntities();
+    mapManager.draw(ctx);
+    eventsManager.setup(canvas);
 }
     Использование отдельной функции загрузки позволя
 ет вносить изменения только в одном методе при измене
@@ -4175,34 +4167,34 @@ Google Chrome версии 39 и Mozilla Firefox версии 35. Под
 <html>
     <body>
        <script>
-          var context = new AudioContext(); // ñîçäàíèå êîíòåêñòà çâóêà
+          var context = new AudioContext();
           function loadSound(url) {
              var request = new XMLHttpRequest();
-             // ñîçäàíèå àñèíõðîííîãî çàïðîñà
+
              request.open('GET', url, true);
              request.responseType = 'arraybuffer';
-             // òèï ðåçóëüòàòà - áàéòû
+
              request.onload = function () {
                  context.decodeAudioData(request.response,
                  function (buffer) {
-                     playSound(buffer); // ïîëó÷åííûé ïîòîê áàéò -
-                     // îçâó÷èòü
+                     playSound(buffer);
+
                  });
              };
              request.send();
           }
           function playSound(buffer) {
              var sound = context.createBufferSource();
-             // Ñîçäàåòñÿ èñòî÷íèê çâóêà
-             sound.buffer = buffer; // íàñòðàèâàåòñÿ áóôåð
+
+             sound.buffer = buffer;
              sound.connect(context.destination);
-             // ïîäêëþ÷åíèå èñòî÷íèêà ê "êîëîíêàì"
+
              if(!sound.start)
-                 sound.start = sound.noteOn; // ïîääåðæêà
-                 // "ñòàðûõ" áðàóçåðîâ
-             sound.start(0); // ïðîèãðûâàíèå çâóêà
+                 sound.start = sound.noteOn;
+
+             sound.start(0);
           }
-          loadSound("effects/boom.wav"); // çàãðóçêà çâóêà
+          loadSound("effects/boom.wav");
        </script>
     </body>
 </html>
@@ -4286,40 +4278,40 @@ Audio API предоставляет соответствующие механи
 <html>
     <body>
        <script>
-         var context = new AudioContext(); // ñîçäàíèå êîíòåêñòà çâóêà
+         var context = new AudioContext();
          var gainNode = context.createGain ? context.createGain() :
          context.createGainNode();
-         gainNode.connect(context.destination); // ïîäêëþ÷åíèå
-         // ê äèíàìèêàì
+         gainNode.connect(context.destination);
+
 Управление звуком                                                111
 
 
           function loadSound(url) {
              var request = new XMLHttpRequest();
-             // ñîçäàíèå àñèíõðîííîãî çàïðîñà
+
              request.open('GET', url, true);
              request.responseType = 'arraybuffer';
-             // òèï ðåçóëüòàòà - áàéòû
+
              request.onload = function () {
                  context.decodeAudioData(request.response,
                  function (buffer) {
-                     playSound(buffer); // ïîëó÷åííûé ïîòîê
-                     // áàéò - îçâó÷èòü
+                     playSound(buffer);
+
                  });
              };
              request.send();
           }
           function playSound(buffer) {
              var sound = context.createBufferSource();
-             // Ñîçäàåòñÿ èñòî÷íèê çâóêà
-             sound.buffer = buffer; // íàñòðàèâàåòñÿ áóôåð
-             sound.connect(gainNode); // ïîäêëþ÷åíèå èñòî÷íèêà
-             // ê "êîëîíêàì"
-             sound.loop = false; // ïîâòîðÿòü
-             gainNode.gain.value = 0.2; // ãðîìêîñòü çâóêà
-             sound.start(0); // ïðîèãðûâàíèå çâóêà
+
+             sound.buffer = buffer;
+             sound.connect(gainNode);
+
+             sound.loop = false;
+             gainNode.gain.value = 0.2;
+             sound.start(0);
           }
-          loadSound("effects/boom.wav"); // çàãðóçêà çâóêà
+          loadSound("effects/boom.wav");
        </script>
     </body>
 </html>
@@ -4371,17 +4363,17 @@ sound.start(0);
 звуки, будет их хранить и проигрывать по мере необходи
 мости.
 var soundManager = {
-     clips: {}, // çâóêîâûå ýôôåêòû
-     context: null, // àóäèîêîíòåêñò
+     clips: {},
+     context: null,
 Управление звуком                                                  113
 
 
-     gainNode: null, // ãëàâíûé óçåë
-     loaded: false, // âñå çâóêè çàãðóæåíû
-     init: function () { }, // èíèöèàëèçàöèÿ ìåíåäæåðà çâóêà
-     load: function (path, callback) { }, // çàãðóçêà îäíîãî àóäèîôàéëà
-     loadArray: function (array) { }, // çàãðóçèòü ìàññèâ çâóêîâ
-     play: function (path, settings) { }, // ïðîèãðûâàíèå ôàéëà
+     gainNode: null,
+     loaded: false,
+     init: function () { },
+     load: function (path, callback) { },
+     loadArray: function (array) { },
+     play: function (path, settings) { },
 };
      Аналогичный подход и методы по созданию менедже
 ра звука представлены в [9], [10]. Многоточием в приве
@@ -4406,12 +4398,12 @@ loaded: false
 ла. Обычно в игре требуется загрузка множества аудио
 файлов, поэтому удобно для загрузки создать специаль
 ную функцию loadArray.
-function init() { // èíèöèàëèçàöèÿ ìåíåäæåðà çâóêà
+function init() {
     this.context = new AudioContext();
     this.gainNode = this.context.createGain ?
     this.context.createGain() : this.context.createGainNode();
-    this.gainNode.connect(this.context.destination); // ïîäêëþ÷åíèå
-    // ê äèíàìèêàì
+    this.gainNode.connect(this.context.destination);
+
 }
 114                                                                 Глава 7
 
@@ -4422,17 +4414,17 @@ function init() { // èíèöèàëèçàöèÿ ìåíåäæåðà çâóêà
 параграфе 7.1. Отличие заключается в том, что результат
 хранится в виде полей менеджера звука (soundManager).
 function load(path, callback) {
-    if (this.clips[path]) { // ïðîâåðÿåì, ÷òî óæå çàãðóæåíû
-         callback(this.clips[path]); // âûçûâàåì çàãðóæåííûé
-         return; // âûõîä
+    if (this.clips[path]) {
+         callback(this.clips[path]);
+         return;
     }
-    var clip = {path: path, buffer: null, loaded: false}; // êëèï, áóôåð,
-    // çàãðóæåí
+    var clip = {path: path, buffer: null, loaded: false};
+
     clip.play = function (volume, loop) {
          soundManager.play(this.path, {looping: loop?loop:false,
          volume: volume?volume:1});
     };
-    this.clips[path] = clip; // ïîìåùàåì â "ìàññèâ" (ëèòåðàë)
+    this.clips[path] = clip;
     var request = new XMLHttpRequest();
     request.open('GET', path, true);
     request.responseType = 'arraybuffer';
@@ -4501,18 +4493,18 @@ function (buffer) {
 
     В результате выполнения функции load будет загру
 жен в браузер пользователя один аудиофайл.
-function loadArray(array) { // çàãðóçèòü ìàññèâ çâóêîâ
+function loadArray(array) {
     for (var i = 0; i < array.length; i++) {
         soundManager.load(array[i], function () {
             if (array.length ===
             Object.keys(soundManager.clips).length) {
-                // åñëè ïîäãîòîâèëè äëÿ çàãðóçêè âñå çâóêè
+
                 for (sd in soundManager.clips)
                     if (!soundManager.clips[sd].loaded) return;
-                soundManager.loaded = true; // âñå çâóêè çàãðóæåíû
+                soundManager.loaded = true;
             }
-        }); // êîíåö soundManager.load
-    } // êîíåö for
+        });
+    }
 }
      Функция loadArray предназначена для загрузки мас
 сива аудиофайлов (array).
@@ -4547,24 +4539,24 @@ if (!soundManager.clips[sd].loaded) return;
                                         После загрузки аудиофайлов возможно их проигры
                                    вание.
                                    function play(path, settings) {
-                                        if (!soundManager.loaded) { // åñëè åùå âñå íå çàãðóçèëè
+                                        if (!soundManager.loaded) {
                                              setTimeout(function () { soundManager.play(path, settings); },
                                              1000);
                                              return;
                                         }
-                                        var looping = false; // çíà÷åíèÿ ïî óìîë÷àíèþ
+                                        var looping = false;
                                         var volume = 1;
-                                        if (settings) { // åñëè ïåðåîïðåäåëåíû, òî ïåðåíàñòðàèâàåì
+                                        if (settings) {
                                         çíà÷åíèÿ
                                              if (settings.looping)
                                                  looping = settings.looping;
                                              if (settings.volume)
                                                  volume = settings.volume;
                                         }
-                                        var sd = this.clips[path]; // ïîëó÷àåì çâóêîâîé ýôôåêò
+                                        var sd = this.clips[path];
                                         if (sd === null)
                                              return false;
-                                   // ñîçäàåì íîâûé ýêçåìïëÿð ïðîèãðûâàòåëÿ BufferSource
+
                                         var sound = soundManager.context.createBufferSource();
                                         sound.buffer = sd.buffer;
                                         sound.connect(soundManager.gainNode);
@@ -4629,22 +4621,22 @@ sound.buffer = sd.buffer;
 ния. В связи с этим целесообразно в менеджере звуков ре
 ализовать метод проигрывания, который будет учитывать
 расстояние до источника.
-function playWorldSound(path, x, y) { // êàêîé çâóê è ãäå õîòèì ïðîèãðàòü
-    // íàñòðîéêà çâóêà â çàâèñèìîñòè ðàññòîÿíèÿ îò èãðîêà
+function playWorldSound(path, x, y) {
+
     if (gameManager.player === null)
          return;
-    // ìàêñèìàëüíàÿ ñëûøèìàÿ îáëàñòü  80% îò ðàçìåðà õîëñòà
+
     var viewSize = Math.max(mapManager.view.w, mapManager.view.h)
     * 0.8;
     var dx = Math.abs(gameManager.player.pos_x - x);
     var dy = Math.abs(gameManager.player.pos_y - y);
     var distance = Math.sqrt(dx * dx + dy * dy);
-    var norm = distance / viewSize; // îïðåäåëÿåì äèñòàíöèþ
-    // äî èñòî÷íèêà çâóêà
+    var norm = distance / viewSize;
+
     if (norm > 1)
          norm = 1;
     var volume = 1.0 - norm;
-    if (!volume) // åñëè íå ñëûøíî, òî íå èãðàåì
+    if (!volume)
          return;
     soundManager.play(path, {looping: false, volume: volume});
 }
@@ -4701,7 +4693,7 @@ soundManager.play(path, {looping: false, volume: volume});
 Управление звуком                                            121
 
 
-function toggleMute() { // ïðèîñòàíîâêà çâóêîâ
+function toggleMute() {
     if (this.gainNode.gain.value > 0)
          this.gainNode.gain.value = 0;
     else
@@ -4714,7 +4706,7 @@ if (this.gainNode.gain.value > 0)
 вается 0 и их воспроизведение прекращается, иначе в поле
 value записывается 1, и они начинают воспроизводиться
 с уровнем громкости 100%.
-function stopAll() { // îòêëþ÷åíèå âñåõ çâóêîâ
+function stopAll() {
     this.gainNode.disconnect();
     this.gainNode = this.context.createGainNode(0);
     this.gainNode.conect(this.context.destination);
@@ -4891,9 +4883,9 @@ stopAll осуществляется отключением gainNode от кол
     webaudio/intro/, свободный. — Загл. с экрана.
 20. Web Audio API [Электронный ресурс]. — 2013. — Режим доступа: http://
     www.w3.org/TR/webaudio/, свободный. — Загл. с экрана.
-21. Qiao/PathFinding.is // GitHub [Электронный ресурс]. — 2015. — Режим
+21. Qiao/PathFinding.is
     доступа: github.com/qiao/PathFinding.js, свободный. — Загл. с экрана.
-22. Subprotocol/verletjsgithub // GitHub [Электронный ресурс]. — 2015. — Ре
+22. Subprotocol/verletjsgithub
     жим доступа: com/subprotocol/verletjs, свободный. — Загл. с экрана.
 23. Линейная алгебра для разработчиков игр [Электронный ресурс]. — 2015. —
     Режим доступа: http://habrahabr.ru/post/131931/, свободный. — Загл. с

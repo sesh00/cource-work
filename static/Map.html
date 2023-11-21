@@ -8,21 +8,6 @@
 <body>
 <canvas id="canvasId" width="960" height="960"></canvas>
 <div id="result"></div>
-
-<script src="../src/MapManager.js"></script>
-<script src="../src/SpriteManager.js"></script>
-
-<script>
-    let canvas = document.getElementById("canvasId");
-    let ctx = canvas.getContext("2d");
-    const mapManager = new MapManager();
-    const spriteManager = new SpriteManager();
-
-    mapManager.loadMap("../tiles/platform.json");
-    spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
-    mapManager.parseEntities();
-    mapManager.draw(ctx);
-</script>
-
+<script type="module" src="../src/main.js"></script>
 </body>
 </html>

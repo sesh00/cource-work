@@ -1,4 +1,4 @@
-class MapManager {
+export default class MapManager {
     constructor() {
         this.imgLoadCount = 0;
         this.imgLoaded = false;
