@@ -1,4 +1,4 @@
-import {eventsManager, mapManager, spriteManager} from "./main.js";
+import {canvas, ctx, eventsManager, mapManager, spriteManager} from "./main.js";
 import {Player, Enemy, Reward} from "./Entity.js";
 
 export default class GameManager {
@@ -23,30 +23,39 @@ export default class GameManager {
             return;
         }
 
+
         this.player.move_x = 0;
         this.player.move_y = 0;
 
         if (eventsManager.action["up"]) {
-            this.player.move_y = -1;
+            this.player.move_y = -64;
         }
         if (eventsManager.action["down"]) {
-            this.player.move_y = 1;
+            this.player.move_y = 64;
         }
         if (eventsManager.action["left"]) {
-            this.player.move_x = -1;
+            this.player.move_x = -64;
         }
         if (eventsManager.action["right"]) {
-            this.player.move_x = 1;
+            this.player.move_x = 64;
         }
 
         if (eventsManager.action["fire"]) {
             this.player.fire();
         }
 
+        // console.log(this.player.move_x);
+        // console.log(this.player.move_y);
+
+
         this.entities.forEach((e) => {
             try {
                 e.update();
-            } catch (ex) {}
+            } catch (ex) {
+                console.log(ex)
+            }
+
+
         });
 
         this.laterKill.forEach((kill) => {
@@ -65,11 +74,14 @@ export default class GameManager {
         this.draw(ctx);
     }
 
-    draw(ctx) { }
+    draw(ctx) {
+        for(let e = 0; e < this.entities.length; e++)
+            this.entities[e].draw(ctx);
+    }
 
     loadAll() {
-        mapManager.loadMap("tilemap.json");
-        spriteManager.loadAtlas("atlas.json", "img/tankattack.png");
+        mapManager.loadMap("../tiles/platform.json");
+        spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
 
         this.factory['Player'] = Player;
         this.factory['Reward'] = Reward;
@@ -85,7 +97,7 @@ export default class GameManager {
     }
 
     play() {
-        setInterval(this.updateWorld, 100);
+        setInterval(this.updateWorld.bind(this), 100);
     }
 }
 

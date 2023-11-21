@@ -1,5 +1,8 @@
+import {physicManager, spriteManager} from "./main.js";
+
 class Entity {
     constructor() {
+        this.name = "";
         this.pos_x = 0;
         this.pos_y = 0;
         this.size_x = 0;
@@ -17,10 +20,12 @@ export class Player extends Entity {
     }
 
     draw(ctx) {
-
+        spriteManager.drawSprite(ctx, "sprite97", this.pos_x, this.pos_y);
     }
 
-    update() { }
+    update() {
+        physicManager.update(this);
+    }
 
     onTouchEntity(obj) { }
 

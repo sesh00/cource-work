@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "platform.json",
+    "activeFile": "platform.xml",
     "expandedProjectPaths": [
         "."
     ],
@@ -28,7 +28,7 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 486.66666666666663,
+                "x": 480,
                 "y": 390.66666666666674
             }
         },
@@ -62,8 +62,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 488,
-                "y": 389.33333333333326
+                "x": 478.66666666666663,
+                "y": 390.66666666666674
             }
         },
         "platform.xml#characters": {
@@ -106,12 +106,12 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
-        "platform.json"
+        "platform.xml"
     ],
     "project": "platform.tiled-project",
     "recentFiles": [
-        "platform.json",
         "platform.xml",
+        "platform.json",
         "sky.xml",
         "platform.tmx",
         "sky2.xml",

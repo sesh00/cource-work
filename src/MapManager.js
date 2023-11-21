@@ -1,3 +1,5 @@
+import {gameManager, mapManager} from "./main.js";
+
 export default class MapManager {
     constructor() {
         this.imgLoadCount = 0;
@@ -22,8 +24,7 @@ export default class MapManager {
         this.tSize.y = this.mapData.tileheight;
         this.mapSize.x = this.xCount * this.tSize.x;
         this.mapSize.y = this.yCount * this.tSize.y;
-        this.view = {x:0, y: this.mapSize.y - this.view.h, w: 960, h: 960}
-
+        // this.view = {x:0, y: this.mapSize.y - this.view.h, w: 960, h: 960}
         const loadImage = (tileset) => {
             const img = new Image();
             img.onload = () => {
@@ -56,47 +57,47 @@ export default class MapManager {
 
 
      parseEntities() {
-        /*if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
+        if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
             setTimeout(function () { mapManager.parseEntities(); }, 100);
         } else
             for (let j = 0; j < this.mapData.layers.length; j++)
-               
+
                 if(this.mapData.layers[j].type === 'objectgroup') {
                     let entities = this.mapData.layers[j];
-                   
+
                     for (let i = 0; i < entities.objects.length; i++) {
                         let e = entities.objects[i];
                         try {
-                            let obj = Object.create(gameManager.factory[e.type]);
-                           
+                            let obj = new gameManager.factory[e.type]();
+
                             obj.name = e.name;
                             obj.pos_x = e.x;
                             obj.pos_y = e.y;
                             obj.size_x = e.width;
                             obj.size_y = e.height;
-                           
+
                             gameManager.entities.push(obj);
                             if(obj.name === "player")
-                               
                                 gameManager.initPlayer(obj);
                         } catch (ex) {
                             console.log("Error while creating: [" + e.gid + "] " + e.type +
                                 ", " + ex);
                         }
                     }
-                }*/
+                }
     }
 
      getTilesetIdx(x, y){
-       /* let wX = x;
+        let wX = x;
         let wY = y;
         let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor
         (wX / this.tSize.x);
-        return this.tLayer.data[idx];*/
+
+        return this.tLayer[0].data[idx];
     }
 
      centerAt(x, y) {
-        /*if(x < this.view.w / 2)
+        if(x < this.view.w / 2)
             this.view.x = 0;
         else
         if(x > this.mapSize.x - this.view.w / 2)
@@ -109,7 +110,7 @@ export default class MapManager {
         if(y > this.mapSize.y - this.view.h / 2)
             this.view.y = this.mapSize.y - this.view.h;
         else
-            this.view.y = y - (this.view.h / 2);*/
+            this.view.y = y - (this.view.h / 2);
     }
 
     loadMap(path) {
