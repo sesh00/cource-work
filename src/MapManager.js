@@ -54,6 +54,64 @@ class MapManager {
         this.jsonLoaded = true;
     }
 
+
+     parseEntities() {
+        /*if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
+            setTimeout(function () { mapManager.parseEntities(); }, 100);
+        } else
+            for (let j = 0; j < this.mapData.layers.length; j++)
+               
+                if(this.mapData.layers[j].type === 'objectgroup') {
+                    let entities = this.mapData.layers[j];
+                   
+                    for (let i = 0; i < entities.objects.length; i++) {
+                        let e = entities.objects[i];
+                        try {
+                            let obj = Object.create(gameManager.factory[e.type]);
+                           
+                            obj.name = e.name;
+                            obj.pos_x = e.x;
+                            obj.pos_y = e.y;
+                            obj.size_x = e.width;
+                            obj.size_y = e.height;
+                           
+                            gameManager.entities.push(obj);
+                            if(obj.name === "player")
+                               
+                                gameManager.initPlayer(obj);
+                        } catch (ex) {
+                            console.log("Error while creating: [" + e.gid + "] " + e.type +
+                                ", " + ex);
+                        }
+                    }
+                }*/
+    }
+
+     getTilesetIdx(x, y){
+       /* let wX = x;
+        let wY = y;
+        let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor
+        (wX / this.tSize.x);
+        return this.tLayer.data[idx];*/
+    }
+
+     centerAt(x, y) {
+        /*if(x < this.view.w / 2)
+            this.view.x = 0;
+        else
+        if(x > this.mapSize.x - this.view.w / 2)
+            this.view.x = this.mapSize.x - this.view.w;
+        else
+            this.view.x = x - (this.view.w / 2);
+        if(y < this.view.h / 2)
+            this.view.y = 0;
+        else
+        if(y > this.mapSize.y - this.view.h / 2)
+            this.view.y = this.mapSize.y - this.view.h;
+        else
+            this.view.y = y - (this.view.h / 2);*/
+    }
+
     loadMap(path) {
         const request = new XMLHttpRequest();
         request.onreadystatechange = () => {
