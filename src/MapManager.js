@@ -7,9 +7,11 @@ class MapManager {
         this.tLayer = [];
         this.xCount = 0;
         this.yCount = 0;
-        this.tSize = {x: 16, y: 16};
-        this.mapSize = {x: 30, y: 15};
+        this.tSize = {x: 64, y: 64};
+        this.mapSize = {x: 15, y: 15};
         this.tilesets = [];
+        this.view = {x: 0, y: 0, w: 960, h: 960}
+
     }
 
     parseMap(tilesJSON) {
@@ -20,6 +22,7 @@ class MapManager {
         this.tSize.y = this.mapData.tileheight;
         this.mapSize.x = this.xCount * this.tSize.x;
         this.mapSize.y = this.yCount * this.tSize.y;
+        this.view = {x:0, y: this.mapSize.y - this.view.h, w: 960, h: 960}
 
         const loadImage = (tileset) => {
             const img = new Image();
@@ -91,6 +94,12 @@ class MapManager {
         return tile;
     }
 
+    isVisible(x, y, width, height) {
+        return !(x + width < this.view.x || y + height < this.view.y ||
+            x > this.view.x + this.view.w || y > this.view.y + this.view.h);
+
+    }
+
 
 
     draw(ctx) {
@@ -111,10 +120,16 @@ class MapManager {
                 for (let i = 0; i < this.tLayer[j].data.length; i++) {
                     if (this.tLayer[j].data[i] !== 0) {
                         const tile = this.getTile(this.tLayer[j].data[i]);
-                        const pX = (i % this.xCount) * this.tSize.x;
-                        const pY = Math.floor(i / this.xCount) * this.tSize.y;
+                        let pX = (i % this.xCount) * this.tSize.x;
+                        let pY = Math.floor(i / this.xCount) * this.tSize.y;
 
                         if (tile.img instanceof HTMLImageElement) {
+
+                            if(!this.isVisible(pX, pY, this.tSize.x, this.tSize.y))
+                                continue;
+                            pX -= this.view.x;
+                            pY -= this.view.y;
+
                             ctx.drawImage(tile.img, tile.px, tile.py, this.tSize.x, this.tSize.y, pX, pY, this.tSize.x, this.tSize.y);
                         } else {
                             console.error("Invalid tile.img type:", tile.img);
@@ -124,40 +139,4 @@ class MapManager {
             }
         }
     }
-
-
-
-    //  parseEntities() {
-    //     if (!mapManager.imgLoaded || !mapManager.jsonLoaded) {
-    //         setTimeout(function () { mapManager.parseEntities(); }, 100);
-    //     } else
-    //         for (let j = 0; j < this.mapData.layers.length; j++)
-    //
-    //             if(this.mapData.layers[j].type === 'objectgroup') {
-    //                 let entities = this.mapData.layers[j];
-    //
-    //                 for (let i = 0; i < entities.objects.length; i++) {
-    //                     let e = entities.objects[i];
-    //                     try {
-    //                         let obj = Object.create(gameManager.factory[e.type]);
-    //
-    //                         obj.name = e.name;
-    //                         obj.pos_x = e.x;
-    //                         obj.pos_y = e.y;
-    //                         obj.size_x = e.width;
-    //                         obj.size_y = e.height;
-    //
-    //                         gameManager.entities.push(obj);
-    //                         if(obj.name === "player")
-    //
-    //                             gameManager.initPlayer(obj);
-    //                     } catch (ex) {
-    //                         console.log("Error while creating: [" + e.gid + "] " + e.type +
-    //                             ", " + ex);
-    //                     }
-    //                 }
-    //             }
-    // }
-
-
 }
