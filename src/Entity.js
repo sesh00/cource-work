@@ -15,15 +15,20 @@ export class Player extends Entity {
         super();
         this.move_x = 0;
         this.move_y = 0;
-        this.speed = 64;
+        this.default_speed = 16
+        this.speed_x = this.default_speed;
+        this.speed_y = this.default_speed;
+
         this.animation_run_left = {0: "sprite97", 1:"sprite98", 2:"sprite99", 3:"sprite100"}
         this.animation_run_right = {0: "sprite46", 1:"sprite45", 2:"sprite44", 3:"sprite43"}
         this.animmation_frame = 1;
         this.last_direction = 0
 
-        this.gravity = 2.0;
-        this.jumpForce = -2.0;
-        this.velocityY = 0;
+        this.is_jumping = false
+        this.jump_force = 200;
+
+        this.lastJumpTime = 0;
+        this.jumpCooldown = 500;
 
 
     }
@@ -52,9 +57,7 @@ export class Player extends Entity {
         if((this.move_x < 0 && this.last_direction === 0) || (this.move_x > 0 && this.last_direction ===1)) {
             return
         }
-
         physicManager.update(this);
-
     }
 
     onTouchEntity(obj) {
@@ -65,8 +68,11 @@ export class Player extends Entity {
     kill() { }
 
     jump() {
-        if (physicManager.isOnGround(this)) {
-            this.velocityY = this.jumpForce;
+        const currentTime = Date.now();
+        if (!this.is_jumping && physicManager.isOnGround(this.pos_x, this.pos_y, this.size_x, 20, 20, 1)
+            && (currentTime - this.lastJumpTime) >= this.jumpCooldown) {
+            this.is_jumping = true;
+            this.lastJumpTime = currentTime;
             physicManager.update(this);
         }
     }

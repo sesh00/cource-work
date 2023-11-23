@@ -1,34 +1,77 @@
 import {gameManager, mapManager} from "./main.js";
 
 export default class PhysicManager {
+
+    getSpace(x_pos, y_pos, side, bias_x, bias_y){
+        const topLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + bias_y);
+        const topRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_x, y_pos + bias_y);
+        const bottomLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + side);
+        const bottomRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_y, y_pos + side);
+
+        console.log(`topLeftCorner ${topLeftCorner}`);
+        console.log(`topRightCorner ${topRightCorner}`);
+        console.log(`bottomLeftCorner ${bottomLeftCorner}`);
+        console.log(`bottomRightCorner ${bottomRightCorner}`);
+
+        return topLeftCorner === 0 && topRightCorner === 0 && bottomLeftCorner === 0 && bottomRightCorner === 0
+    }
+
     update(obj) {
-        const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed);
-        let newY = obj.pos_y + Math.floor(obj.velocityY * obj.speed);
-        let ts = mapManager.getTilesetIdx(newX + obj.size_x / 2, newY + obj.size_y / 2);
-        const e = this.entityAtXY(obj, newX, newY);
 
 
-        if (ts === 0 && e === null) {
-            obj.pos_x = newX;
-            obj.pos_y = newY;
-        } else {
-            obj.pos_y = newY;
+
+
+
+        if(!obj.isOnGround && !obj.is_jumping){ // не на земле не прыгаем
+            obj.move_y = 1;
         }
 
-        if (!this.isOnGround(obj)) {
-            obj.velocityY += obj.gravity; // не на земле начинаем тянуть
-            if (obj.velocityY > 0) obj.velocityY = 1;
-        } else {
-            obj.velocityY = 0; // на земле не тянем никуда
+        if(obj.is_jumping && obj.isOnGround) { // прыгаем на земле
+            obj.move_y = -1;
+            obj.speed_y = obj.jump_force;
         }
+
+        const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
+        const newY = obj.pos_y + Math.floor(obj.move_y * obj.speed_y);
+
+
+        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
+            obj.pos_x = obj.pos_x + Math.floor(obj.move_x);
+            obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
+
+            if (obj.pos_x === newX && obj.pos_y === newY) {
+                break
+            }
+        }
+
+
+        obj.pos_x = obj.pos_x - Math.floor(obj.move_x);
+        obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
+
+        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
+            obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
+
+            if (obj.pos_y === newY) break;
+
+        }
+
+        obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
+        obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x,20, 20 , 1);
+
+        if(obj.is_jumping && !obj.isOnGround) {
+            obj.is_jumping = false;
+            obj.speed_y = obj.default_speed;
+
+        }
+
 
     }
 
-    isOnGround(obj) {
-        const currentX = obj.pos_x;
-        const currentY = obj.pos_y + mapManager.tSize.y;
-        const ts = mapManager.getTilesetIdx(currentX, currentY);
-        return ts !== 0
+    isOnGround(x_pos, y_pos, side, bias_x, bias_y, delta){
+        const bottomLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + side + delta);
+        const bottomRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_y, y_pos + side + delta);
+
+        return bottomRightCorner !== 0 || bottomLeftCorner !== 0;
     }
 
     entityAtXY(obj, x, y) {

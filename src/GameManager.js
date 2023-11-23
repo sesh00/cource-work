@@ -17,15 +17,9 @@ export default class GameManager {
         this.laterKill.push(obj);
     }
 
-    drawUpdate() {
-        mapManager.draw(ctx);
-        mapManager.centerAt(this.player.pos_x, this.player.pos_y);
-        this.draw(ctx);
 
 
-    }
-
-    commandsUpdate() {
+    update() {
         if (this.player === null) {
             return;
         }
@@ -33,13 +27,12 @@ export default class GameManager {
         this.player.move_x = 0;
         this.player.move_y = 0;
 
-        /*if (eventsManager.action["up"]) {
+        if (eventsManager.action["up"]) {
             this.player.move_y = -1;
         }
         if (eventsManager.action["down"]) {
             this.player.move_y = 1;
-
-        }*/
+        }
         if (eventsManager.action["jump"]) {
             this.player.jump();
         }
@@ -51,9 +44,7 @@ export default class GameManager {
         }
 
 
-    }
 
-    update() {
         this.entities.forEach((e) => {
             try {
                 e.update();
@@ -74,6 +65,10 @@ export default class GameManager {
         if (this.laterKill.length > 0) {
             this.laterKill.length = 0;
         }
+
+        mapManager.draw(ctx);
+        mapManager.centerAt(this.player.pos_x, this.player.pos_y);
+        this.draw(ctx);
     }
 
     draw(ctx) {
@@ -96,9 +91,8 @@ export default class GameManager {
 
 
     play() {
-        setInterval(this.update.bind(this), 130);
-        setInterval(this.drawUpdate.bind(this), 80);
-        setInterval(this.commandsUpdate.bind(this), 100)
+        setInterval(this.update.bind(this), 40);
+
     }
 }
 

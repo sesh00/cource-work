@@ -5,10 +5,10 @@ export default class EventsManager {
     }
 
     setup(canvas) {
-        //this.bind[87] = 'up';
+        this.bind[87] = 'up';
         this.bind[32] = 'jump';
         this.bind[65] = 'left';
-        //this.bind[83] = 'down';
+        this.bind[83] = 'down';
         this.bind[68] = 'right';
 
 
