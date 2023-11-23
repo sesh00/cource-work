@@ -5,9 +5,10 @@ export default class EventsManager {
     }
 
     setup(canvas) {
-        this.bind[87] = 'up';
+        //this.bind[87] = 'up';
+        this.bind[32] = 'jump';
         this.bind[65] = 'left';
-        this.bind[83] = 'down';
+        //this.bind[83] = 'down';
         this.bind[68] = 'right';
 
 
@@ -17,6 +18,7 @@ export default class EventsManager {
 
 
     onKeyDown(event) {
+        event.preventDefault()
         const action = this.bind[event.keyCode];
         if (action) {
             this.action[action] = true;
@@ -24,6 +26,7 @@ export default class EventsManager {
     }
 
     onKeyUp(event) {
+        event.preventDefault()
         const action = this.bind[event.keyCode];
         if (action) {
             this.action[action] = false;

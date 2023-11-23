@@ -13,7 +13,6 @@ class Entity {
 export class Player extends Entity {
     constructor() {
         super();
-        this.lifetime = 100;
         this.move_x = 0;
         this.move_y = 0;
         this.speed = 64;
@@ -21,6 +20,11 @@ export class Player extends Entity {
         this.animation_run_right = {0: "sprite46", 1:"sprite45", 2:"sprite44", 3:"sprite43"}
         this.animmation_frame = 1;
         this.last_direction = 0
+
+        this.gravity = 2.0;
+        this.jumpForce = -2.0;
+        this.velocityY = 0;
+
 
     }
 
@@ -46,10 +50,11 @@ export class Player extends Entity {
 
     update() {
         if((this.move_x < 0 && this.last_direction === 0) || (this.move_x > 0 && this.last_direction ===1)) {
-
-        } else {
-            physicManager.update(this);
+            return
         }
+
+        physicManager.update(this);
+
     }
 
     onTouchEntity(obj) {
@@ -59,7 +64,12 @@ export class Player extends Entity {
 
     kill() { }
 
-    fire() { }
+    jump() {
+        if (physicManager.isOnGround(this)) {
+            this.velocityY = this.jumpForce;
+            physicManager.update(this);
+        }
+    }
 
 }
 
