@@ -87,16 +87,20 @@ export default class MapManager {
                 }
     }
 
-     getTilesetIdx(x, y){
+    getTilesetIdx(x, y) {
         let wX = x;
         let wY = y;
-        let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor
-        (wX / this.tSize.x);
+        let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor(wX / this.tSize.x);
 
-        return this.tLayer[0].data[idx];
+        if (idx >= 0 && idx < this.tLayer[2].data.length) {
+            return this.tLayer[2].data[idx];
+        } else {
+            return 1;
+        }
     }
 
-     centerAt(x, y) {
+
+    centerAt(x, y) {
         if(x < this.view.w / 2)
             this.view.x = 0;
         else

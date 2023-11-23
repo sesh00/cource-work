@@ -5,7 +5,6 @@ export default class GameManager {
     constructor() {
         this.factory = {};
         this.entities = [];
-        this.fireNum = 0;
         this.player = null;
         this.laterKill = [];
     }
@@ -28,24 +27,21 @@ export default class GameManager {
         this.player.move_y = 0;
 
         if (eventsManager.action["up"]) {
-            this.player.move_y = -64;
+            this.player.move_y = -1;
         }
         if (eventsManager.action["down"]) {
-            this.player.move_y = 64;
+            this.player.move_y = 1;
+
         }
         if (eventsManager.action["left"]) {
-            this.player.move_x = -64;
+            this.player.move_x = -1;
+
         }
         if (eventsManager.action["right"]) {
-            this.player.move_x = 64;
+            this.player.move_x = 1;
         }
 
-        if (eventsManager.action["fire"]) {
-            this.player.fire();
-        }
 
-        // console.log(this.player.move_x);
-        // console.log(this.player.move_y);
 
 
         this.entities.forEach((e) => {
@@ -80,7 +76,7 @@ export default class GameManager {
     }
 
     loadAll() {
-        mapManager.loadMap("../tiles/platform.json");
+        mapManager.loadMap("../tiles/level1.json");
         spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
 
         this.factory['Player'] = Player;

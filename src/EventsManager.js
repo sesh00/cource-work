@@ -9,8 +9,8 @@ export default class EventsManager {
         this.bind[65] = 'left';
         this.bind[83] = 'down';
         this.bind[68] = 'right';
-        this.bind[32] = 'fire';
-        
+
+
         document.body.addEventListener("keydown", this.onKeyDown.bind(this));
         document.body.addEventListener("keyup", this.onKeyUp.bind(this));
     }

@@ -3,36 +3,22 @@ import {gameManager, mapManager} from "./main.js";
 export default class PhysicManager {
     update(obj) {
         if (obj.move_x === 0 && obj.move_y === 0) {
-            return "stop";
+            return;
         }
+
 
         const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed);
         const newY = obj.pos_y + Math.floor(obj.move_y * obj.speed);
-        console.log(obj.pos_y);
-        console.log(obj.pos_x);
 
-        const ts = mapManager.getTilesetIdx(newX + obj.size_x / 2, newY + obj.size_y / 2);
+        const ts = mapManager.getTilesetIdx(newX + obj.size_x / 2,newY + obj.size_y / 2);
+
         const e = this.entityAtXY(obj, newX, newY);
-/*
-        if (e !== null && obj.onTouchEntity) {
-            obj.onTouchEntity(e);
+
+        if (ts === 0 && e === null) {
+            obj.pos_x = newX;
+            obj.pos_y = newY;
         }
 
-        if (ts !== 7 && obj.onTouchMap) {
-            obj.onTouchMap(ts);
-        }*/
-
-      //  if (ts === 7 && e === null) {
-        obj.pos_x = newX;
-        obj.pos_y = newY;
-
-        console.log(obj.pos_y);
-        console.log(obj.pos_x);
-       /* } else {
-            return "break";
-        }*/
-
-        return "move";
     }
 
     entityAtXY(obj, x, y) {

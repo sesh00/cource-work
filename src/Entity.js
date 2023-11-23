@@ -16,22 +16,51 @@ export class Player extends Entity {
         this.lifetime = 100;
         this.move_x = 0;
         this.move_y = 0;
-        this.speed = 1;
+        this.speed = 64;
+        this.animation_run_left = {0: "sprite97", 1:"sprite98", 2:"sprite99", 3:"sprite100"}
+        this.animation_run_right = {0: "sprite46", 1:"sprite45", 2:"sprite44", 3:"sprite43"}
+        this.animmation_frame = 1;
+        this.last_direction = 0
+
     }
 
     draw(ctx) {
-        spriteManager.drawSprite(ctx, "sprite97", this.pos_x, this.pos_y);
+        if (this.move_x < 0){
+            spriteManager.drawSprite(ctx, this.animation_run_right[this.animmation_frame % 4], this.pos_x, this.pos_y);
+            this.animmation_frame++;
+            this.last_direction = 1;
+        } else if(this.move_x > 0) {
+            spriteManager.drawSprite(ctx, this.animation_run_left[this.animmation_frame % 4], this.pos_x, this.pos_y);
+            this.animmation_frame++;
+            this.last_direction = 0;
+        } else {
+            if (this.last_direction === 0) {
+                spriteManager.drawSprite(ctx, "sprite97", this.pos_x, this.pos_y);
+            } else {
+                spriteManager.drawSprite(ctx, "sprite46", this.pos_x, this.pos_y);
+            }
+            this.animmation_frame = 1;
+        }
+
     }
 
     update() {
-        physicManager.update(this);
+        if((this.move_x < 0 && this.last_direction === 0) || (this.move_x > 0 && this.last_direction ===1)) {
+
+        } else {
+            physicManager.update(this);
+        }
     }
 
-    onTouchEntity(obj) { }
+    onTouchEntity(obj) {
+
+
+    }
 
     kill() { }
 
     fire() { }
+
 }
 
 
