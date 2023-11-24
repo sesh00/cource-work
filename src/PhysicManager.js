@@ -58,6 +58,10 @@ export default class PhysicManager {
 
     update(obj) {
 
+        if(this.entityAtXY(obj, obj.pos_x, obj.pos_y)){
+            gameManager.kill(obj);
+        }
+
         if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
             mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
             obj.reward_count++;
@@ -65,12 +69,12 @@ export default class PhysicManager {
 
         if (this.getWin(obj.pos_x, obj.pos_y, obj.size_x)) {
             if( obj.reward_count === mapManager.rewardCount){
-                gameManager.win();
+                gameManager.kill(obj);
             }
         }
 
         if (this.getLose(obj.pos_x, obj.pos_y, obj.size_x)) {
-            gameManager.lose();
+            gameManager.kill(obj);
         }
 
         if(!obj.isOnGround && !obj.is_jumping){
