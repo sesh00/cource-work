@@ -99,13 +99,24 @@
                 {
                  "height":64,
                  "id":6,
-                 "name":"enemy",
+                 "name":"snake",
                  "rotation":0,
                  "type":"Enemy",
                  "visible":true,
                  "width":64,
-                 "x":1088,
-                 "y":704
+                 "x":1089,
+                 "y":703
+                }, 
+                {
+                 "height":64,
+                 "id":7,
+                 "name":"goblin",
+                 "rotation":0,
+                 "type":"Enemy",
+                 "visible":true,
+                 "width":64,
+                 "x":1855,
+                 "y":703
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -114,7 +125,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":7,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "properties":[
         {

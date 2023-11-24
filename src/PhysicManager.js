@@ -38,7 +38,26 @@ export default class PhysicManager {
 
     }
 
+    updateEnemy(obj){
+
+        const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
+        const isWallAndOnGround = (x, y, size) => this.getWall(x, y, size) && this.isOnGround(x, y, size, 20, 40);
+
+        while (isWallAndOnGround(obj.pos_x, obj.pos_y, obj.size_x)) {
+            obj.pos_x = obj.pos_x + Math.floor(obj.move_x);
+            if (obj.pos_x === newX) break;
+        }
+
+        if(!isWallAndOnGround(obj.pos_x, obj.pos_y, obj.size_x)) {
+            obj.pos_x = obj.pos_x - Math.floor(obj.move_x);
+            obj.move_x *= -1;
+
+        }
+
+    }
+
     update(obj) {
+
         if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
             mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
             obj.reward_count++;

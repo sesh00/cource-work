@@ -1,5 +1,5 @@
 import {canvas, ctx, eventsManager, mapManager, spriteManager} from "./main.js";
-import {Player, Enemy, Reward} from "./Entity.js";
+import {Player, Enemy} from "./Entity.js";
 
 export default class GameManager {
     constructor() {
@@ -81,7 +81,6 @@ export default class GameManager {
         spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
 
         this.factory['Player'] = Player;
-        this.factory['Reward'] = Reward;
         this.factory['Enemy'] = Enemy;
 
         mapManager.parseEntities();

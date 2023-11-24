@@ -25,11 +25,11 @@
             "scaleInEditor": 1
         },
         "level1.json": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1366.6666666666667,
-                "y": 930.3030303030303
+                "x": 1420,
+                "y": 602
             }
         },
         "level1.json#characters": {
