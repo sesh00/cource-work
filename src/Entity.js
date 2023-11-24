@@ -21,29 +21,38 @@ export class Player extends Entity {
         this.animation_run_left = {0: "sprite97", 1:"sprite98", 2:"sprite99", 3:"sprite100"}
         this.animation_run_right = {0: "sprite46", 1:"sprite45", 2:"sprite44", 3:"sprite43"}
 
-        this.animation_jump_left = {0: "sprite101", 1:"sprite102", 2:"sprite103", 3:"sprite104"}
-        this.animation_jump_right = {0: "sprite42", 1:"sprite41", 2:"sprite40", 3:"sprite39"}
+        this.animation_hit_left = {0: "sprite106", 1:"sprite107", 2:"sprite106"}
+        this.animation_hit_right = {0: "sprite37", 1:"sprite38", 2:"sprite37"}
 
         this.animmation_frame = 1;
         this.last_direction = 0
 
         this.is_jumping = false
-        this.jump_force = 100;
+        this.jump_force = 60;
 
         this.lastJumpTime = 0;
         this.jumpCooldown = 600;
 
         this.g1 = 1.25; // сила гравитации при прыжке
-        this.g2 = 1.50;
+        this.g2 = 1.35;
         this.speed_lim = 13; // сила тяги вниз
 
         this.reward_count = 0;
+
+        this.long_jump = false
+        this.is_hitting = false;
+        this.lastHitTime = 0;
+        this.hitCooldown = 200;
     }
 
     draw(ctx) {
             if (this.move_x < 0){
                 if(this.isOnGround){
-                    spriteManager.drawSprite(ctx, this.animation_run_right[this.animmation_frame % 4], this.pos_x, this.pos_y);
+                    if(this.is_hitting){
+                        spriteManager.drawSprite(ctx, this.animation_hit_right[this.animmation_frame % 3], this.pos_x, this.pos_y);
+                    } else {
+                        spriteManager.drawSprite(ctx, this.animation_run_right[this.animmation_frame % 4], this.pos_x, this.pos_y);
+                    }
                     this.animmation_frame++;
                 } else {
                     spriteManager.drawSprite(ctx, "sprite41", this.pos_x, this.pos_y);
@@ -53,7 +62,11 @@ export class Player extends Entity {
 
             } else if(this.move_x > 0) {
                 if(this.isOnGround) {
-                    spriteManager.drawSprite(ctx, this.animation_run_left[this.animmation_frame % 4], this.pos_x, this.pos_y);
+                    if(this.is_hitting) {
+                        spriteManager.drawSprite(ctx, this.animation_hit_left[this.animmation_frame % 3], this.pos_x, this.pos_y);
+                    } else {
+                        spriteManager.drawSprite(ctx, this.animation_run_left[this.animmation_frame % 4], this.pos_x, this.pos_y);
+                    }
                     this.animmation_frame++;
                 } else {
                     spriteManager.drawSprite(ctx, "sprite102", this.pos_x, this.pos_y);
@@ -62,11 +75,26 @@ export class Player extends Entity {
             } else {
                 if(this.isOnGround) {
                     if (this.last_direction === 0) {
-                        spriteManager.drawSprite(ctx, "sprite97", this.pos_x, this.pos_y);
+                        if(this.is_hitting) {
+                            spriteManager.drawSprite(ctx, this.animation_hit_left[this.animmation_frame % 3], this.pos_x, this.pos_y);
+                            this.animmation_frame++;
+                        } else {
+                            spriteManager.drawSprite(ctx, "sprite97", this.pos_x, this.pos_y);
+                            this.animmation_frame = 1;
+
+                        }
                     } else {
-                        spriteManager.drawSprite(ctx, "sprite46", this.pos_x, this.pos_y);
+
+                        if(this.is_hitting) {
+                            spriteManager.drawSprite(ctx, this.animation_hit_right[this.animmation_frame % 3], this.pos_x, this.pos_y);
+                            this.animmation_frame++;
+                        } else {
+                            spriteManager.drawSprite(ctx, "sprite46", this.pos_x, this.pos_y);
+                            this.animmation_frame = 1;
+
+                        }
+
                     }
-                    this.animmation_frame = 1;
                 } else {
                     if (this.last_direction === 0) {
                         spriteManager.drawSprite(ctx, "sprite103", this.pos_x, this.pos_y);
@@ -85,6 +113,18 @@ export class Player extends Entity {
             return
         }
         physicManager.update(this);
+    }
+
+    hit() {
+        const currentTime = Date.now();
+        if ((currentTime - this.lastHitTime) >= this.jumpCooldown) {
+            this.is_hitting = true;
+            this.lastHitTime = currentTime;
+            physicManager.update(this);
+        }
+
+
+
     }
 
 

@@ -61,12 +61,10 @@ export default class PhysicManager {
     }
 
     update(obj) {
-
-
         const e = this.entityAtXY(obj, obj.pos_x, obj.pos_y)
 
         if(e != null){
-            if (obj.pos_y + this.default_delta < e.pos_y ) {
+            if (obj.is_hitting) { //obj.pos_y + this.default_delta < e.pos_y
                 gameManager.kill(e);
             } else {
                 gameManager.kill(obj);
@@ -97,8 +95,14 @@ export default class PhysicManager {
         if(obj.is_jumping && obj.isOnGround) { // прыжок с земли
             obj.move_y = -1;
             obj.speed_y = obj.jump_force;
+            obj.long_jump = true
 
         }
+
+        if(obj.long_jump){
+            obj.move_y = -1;
+        }
+
 
         const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
         const newY = obj.pos_y + Math.floor(obj.move_y * obj.speed_y);
@@ -120,18 +124,18 @@ export default class PhysicManager {
         obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x);
 
         if(obj.is_jumping && !obj.isOnGround) { // прыгнули приземляемся
-            obj.speed_y = Math.max(obj.speed_lim, obj.speed_y / obj.g2)
+            obj.speed_y = Math.max(obj.speed_lim, obj.speed_y / obj.g2) // через сколько начнем падать
 
             if (obj.speed_y === obj.speed_lim){
                 obj.is_jumping = false;
+                obj.long_jump = false;
             }
         }
 
         if (!obj.is_jumping && obj.isOnGround){ // приземлились
-            obj.speed_y = obj.speed_lim;
+            obj.speed_y = obj.speed_lim; // начальная скорость падения
         }
-
-
+        if ((Date.now() - obj.lastHitTime) >= obj.hitCooldown) obj.is_hitting = false;
     }
 
     isOnGround(x_pos, y_pos, side, bias_x = 20, bias_y = 20, delta = 1){

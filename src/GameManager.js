@@ -27,11 +27,8 @@ export default class GameManager {
         this.player.move_x = 0;
         this.player.move_y = 0;
 
-        if (eventsManager.action["up"]) {
-            this.player.move_y = -1;
-        }
-        if (eventsManager.action["down"]) {
-            this.player.move_y = 1;
+        if (eventsManager.action["hit"]) {
+            this.player.hit();
         }
         if (eventsManager.action["jump"]) {
             this.player.jump();
