@@ -91,7 +91,7 @@ export default class GameManager {
 
 
     play() {
-        setInterval(this.update.bind(this), 40);
+        setInterval(this.update.bind(this), 50);
 
     }
 }

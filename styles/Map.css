@@ -4,9 +4,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: #dbfcff;
+    background: #000000;
 }
 
-#canvasId {
-    border-radius: 2%;
-}

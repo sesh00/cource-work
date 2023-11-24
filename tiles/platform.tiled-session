@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "level1.json",
     "expandedProjectPaths": [
         "."
     ],
@@ -25,11 +25,11 @@
             "scaleInEditor": 1
         },
         "level1.json": {
-            "scale": 0.703125,
+            "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 723.9111111111112,
-                "y": 598.7555555555555
+                "x": 936,
+                "y": 844
             }
         },
         "level1.json#characters": {
@@ -123,6 +123,7 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
+        "level1.json"
     ],
     "project": "platform.tiled-project",
     "recentFiles": [

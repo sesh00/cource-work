@@ -8,10 +8,6 @@ export default class PhysicManager {
         const bottomLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + side);
         const bottomRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_y, y_pos + side);
 
-        console.log(`topLeftCorner ${topLeftCorner}`);
-        console.log(`topRightCorner ${topRightCorner}`);
-        console.log(`bottomLeftCorner ${bottomLeftCorner}`);
-        console.log(`bottomRightCorner ${bottomRightCorner}`);
 
         return topLeftCorner === 0 && topRightCorner === 0 && bottomLeftCorner === 0 && bottomRightCorner === 0
     }
@@ -20,6 +16,7 @@ export default class PhysicManager {
 
         if(!obj.isOnGround && !obj.is_jumping){ // не на земле не прыгаем
             obj.move_y = 1;
+            obj.speed_y *= obj.g1;
         }
 
         if(obj.is_jumping && obj.isOnGround) { // прыгаем на земле
@@ -30,35 +27,33 @@ export default class PhysicManager {
         const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
         const newY = obj.pos_y + Math.floor(obj.move_y * obj.speed_y);
 
+        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
+            obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
+            if (obj.pos_y === newY) break;
+        }
+
+        obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
 
         while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
             obj.pos_x = obj.pos_x + Math.floor(obj.move_x);
-            obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
-
-            if (obj.pos_x === newX && obj.pos_y === newY) {
-                break
-            }
+            if (obj.pos_x === newX) break;
         }
-
-
         obj.pos_x = obj.pos_x - Math.floor(obj.move_x);
-        obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
 
-        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
-            obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
-
-            if (obj.pos_y === newY) break;
-
-        }
-
-        obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
         obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x,20, 20 , 1);
 
         if(obj.is_jumping && !obj.isOnGround) {
-            obj.is_jumping = false;
-            obj.speed_y = obj.default_speed;
+            obj.speed_y = Math.max(obj.speed_lim, obj.speed_y / obj.g2)
 
+            if (obj.speed_y === obj.speed_lim){
+                obj.is_jumping = false;
+            }
         }
+
+        if (!obj.is_jumping && obj.isOnGround){
+            obj.speed_y = obj.speed_lim;
+        }
+
 
 
     }

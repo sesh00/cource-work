@@ -15,30 +15,34 @@ export class Player extends Entity {
         super();
         this.move_x = 0;
         this.move_y = 0;
-        this.default_speed = 16
-        this.speed_x = this.default_speed;
-        this.speed_y = this.default_speed;
+        this.speed_x = 16;
+        this.speed_y = 16;
 
         this.animation_run_left = {0: "sprite97", 1:"sprite98", 2:"sprite99", 3:"sprite100"}
         this.animation_run_right = {0: "sprite46", 1:"sprite45", 2:"sprite44", 3:"sprite43"}
+
         this.animmation_frame = 1;
         this.last_direction = 0
 
         this.is_jumping = false
-        this.jump_force = 200;
+        this.jump_force = 100;
 
         this.lastJumpTime = 0;
         this.jumpCooldown = 500;
 
-
+        this.g1 = 1.2;
+        this.g2 = 1.45;
+        this.speed_lim = 16;
     }
 
     draw(ctx) {
+
         if (this.move_x < 0){
             spriteManager.drawSprite(ctx, this.animation_run_right[this.animmation_frame % 4], this.pos_x, this.pos_y);
             this.animmation_frame++;
             this.last_direction = 1;
         } else if(this.move_x > 0) {
+
             spriteManager.drawSprite(ctx, this.animation_run_left[this.animmation_frame % 4], this.pos_x, this.pos_y);
             this.animmation_frame++;
             this.last_direction = 0;
