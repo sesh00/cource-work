@@ -89,14 +89,15 @@ export default class PhysicManager {
             gameManager.kill(obj);
         }
 
-        if(!obj.isOnGround && !obj.is_jumping){
+        if(!obj.isOnGround && !obj.is_jumping){ // в свободном падении без прыжка
             obj.move_y = 1;
             obj.speed_y *= obj.g1;
         }
 
-        if(obj.is_jumping && obj.isOnGround) {
+        if(obj.is_jumping && obj.isOnGround) { // прыжок с земли
             obj.move_y = -1;
             obj.speed_y = obj.jump_force;
+
         }
 
         const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
@@ -118,7 +119,7 @@ export default class PhysicManager {
 
         obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x);
 
-        if(obj.is_jumping && !obj.isOnGround) {
+        if(obj.is_jumping && !obj.isOnGround) { // прыгнули приземляемся
             obj.speed_y = Math.max(obj.speed_lim, obj.speed_y / obj.g2)
 
             if (obj.speed_y === obj.speed_lim){
@@ -126,7 +127,7 @@ export default class PhysicManager {
             }
         }
 
-        if (!obj.is_jumping && obj.isOnGround){
+        if (!obj.is_jumping && obj.isOnGround){ // приземлились
             obj.speed_y = obj.speed_lim;
         }
 

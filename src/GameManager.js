@@ -90,7 +90,7 @@ export default class GameManager {
 
 
     play() {
-            setInterval(this.update.bind(this), 60);
+            setInterval(this.update.bind(this), 60); //60
     }
 
     win() {
