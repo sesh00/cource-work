@@ -26,10 +26,10 @@
         },
         "level1.json": {
             "scale": 0.5,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 936,
-                "y": 844
+                "x": 780,
+                "y": 832
             }
         },
         "level1.json#characters": {

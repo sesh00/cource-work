@@ -86,16 +86,25 @@ export default class MapManager {
                 }
     }
 
-    getTilesetIdx(x, y) {
+    getTileSetIdx(x, y, layer = 2) {
+        if (0 > y || y > this.mapSize.y || x < 0 || x > this.mapSize.x){
+            return 1;
+        }
         let wX = x;
         let wY = y;
         let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor(wX / this.tSize.x);
+        return this.tLayer[layer].data[idx];
 
-        if (idx >= 0 && idx < this.tLayer[2].data.length) {
-            return this.tLayer[2].data[idx];
-        } else {
-            return 1;
+    }
+
+    setTileSetByIdx(x, y, value = 0, layer = 2) {
+        if (0 > y || y > this.mapSize.y || x < 0 || x > this.mapSize.x){
+            return;
         }
+        let wX = x;
+        let wY = y;
+        let idx = Math.floor(wY / this.tSize.y) * this.xCount + Math.floor(wX / this.tSize.x);
+        this.tLayer[layer].data[idx] = value;
     }
 
 

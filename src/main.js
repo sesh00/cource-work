@@ -4,6 +4,7 @@ import GameManager from "./GameManager.js";
 import PhysicManager from "./PhysicManager.js";
 import SpriteManager from "./SpriteManager.js";
 
+
 export let canvas = document.getElementById("canvasId");
 export let ctx = canvas.getContext("2d");
 export let mapManager = new MapManager();

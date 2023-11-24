@@ -33,6 +33,8 @@ export class Player extends Entity {
         this.g1 = 1.2;
         this.g2 = 1.45;
         this.speed_lim = 16;
+
+        this.reward_count = 0;
     }
 
     draw(ctx) {

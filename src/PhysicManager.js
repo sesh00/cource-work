@@ -1,18 +1,37 @@
-import {gameManager, mapManager} from "./main.js";
+import { gameManager, mapManager} from "./main.js";
 
 export default class PhysicManager {
 
-    getSpace(x_pos, y_pos, side, bias_x, bias_y){
-        const topLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + bias_y);
-        const topRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_x, y_pos + bias_y);
-        const bottomLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + side);
-        const bottomRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_y, y_pos + side);
+    getSpace(x_pos, y_pos, side, bias_x, bias_y, layer = 2){
+        const topLeftCorner = mapManager.getTileSetIdx(x_pos + bias_x, y_pos + bias_y, layer);
+        const topRightCorner = mapManager.getTileSetIdx(x_pos + side - bias_x, y_pos + bias_y, layer);
+        const bottomLeftCorner = mapManager.getTileSetIdx(x_pos + bias_x, y_pos + side, layer);
+        const bottomRightCorner = mapManager.getTileSetIdx(x_pos + side - bias_y, y_pos + side, layer);
 
+        return {
+            topLeftCorner: topLeftCorner,
+            topRightCorner: topRightCorner,
+            bottomLeftCorner: bottomLeftCorner,
+            bottomRightCorner: bottomRightCorner
+        };
+    }
 
-        return topLeftCorner === 0 && topRightCorner === 0 && bottomLeftCorner === 0 && bottomRightCorner === 0
+    getWall(x_pos, y_pos, side, bias_x = 20, bias_y = 20) {
+        const { topLeftCorner, topRightCorner, bottomLeftCorner, bottomRightCorner } = this.getSpace(x_pos, y_pos, side, bias_x, bias_y);
+        return topLeftCorner === 0 && topRightCorner === 0 && bottomLeftCorner === 0 && bottomRightCorner === 0;
+    }
+    getReward(x_pos, y_pos, side, bias_x = 20, bias_y = 20) {
+        const { topLeftCorner, topRightCorner, bottomLeftCorner, bottomRightCorner } = this.getSpace(x_pos, y_pos, side, bias_x, bias_y, 1);
+        return topLeftCorner === 83 && topRightCorner === 83 && bottomLeftCorner === 83 && bottomRightCorner === 83;
+
     }
 
     update(obj) {
+
+        if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
+            mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
+            obj.reward_count++;
+        }
 
         if(!obj.isOnGround && !obj.is_jumping){ // не на земле не прыгаем
             obj.move_y = 1;
@@ -27,20 +46,21 @@ export default class PhysicManager {
         const newX = obj.pos_x + Math.floor(obj.move_x * obj.speed_x);
         const newY = obj.pos_y + Math.floor(obj.move_y * obj.speed_y);
 
-        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
+
+        while(this.getWall(obj.pos_x, obj.pos_y, obj.size_x)) {
             obj.pos_y = obj.pos_y + Math.floor(obj.move_y);
             if (obj.pos_y === newY) break;
         }
 
         obj.pos_y = obj.pos_y - Math.floor(obj.move_y);
 
-        while(this.getSpace(obj.pos_x, obj.pos_y, obj.size_x,20, 20 )) {
+        while(this.getWall(obj.pos_x, obj.pos_y, obj.size_x)) {
             obj.pos_x = obj.pos_x + Math.floor(obj.move_x);
             if (obj.pos_x === newX) break;
         }
         obj.pos_x = obj.pos_x - Math.floor(obj.move_x);
 
-        obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x,20, 20 , 1);
+        obj.isOnGround = this.isOnGround(obj.pos_x, obj.pos_y, obj.size_x);
 
         if(obj.is_jumping && !obj.isOnGround) {
             obj.speed_y = Math.max(obj.speed_lim, obj.speed_y / obj.g2)
@@ -55,12 +75,11 @@ export default class PhysicManager {
         }
 
 
-
     }
 
-    isOnGround(x_pos, y_pos, side, bias_x, bias_y, delta){
-        const bottomLeftCorner = mapManager.getTilesetIdx(x_pos + bias_x, y_pos + side + delta);
-        const bottomRightCorner = mapManager.getTilesetIdx(x_pos + side - bias_y, y_pos + side + delta);
+    isOnGround(x_pos, y_pos, side, bias_x = 20, bias_y = 20, delta = 1){
+        const bottomLeftCorner = mapManager.getTileSetIdx(x_pos + bias_x, y_pos + side + delta);
+        const bottomRightCorner = mapManager.getTileSetIdx(x_pos + side - bias_y, y_pos + side + delta);
 
         return bottomRightCorner !== 0 || bottomLeftCorner !== 0;
     }
