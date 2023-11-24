@@ -2,6 +2,10 @@ import { gameManager, mapManager} from "./main.js";
 
 export default class PhysicManager {
 
+    constructor() {
+        this.default_delta = 5;
+    }
+
     getSpace(x_pos, y_pos, side, bias_x, bias_y, layer = 2){
         const topLeftCorner = mapManager.getTileSetIdx(x_pos + bias_x, y_pos + bias_y, layer);
         const topRightCorner = mapManager.getTileSetIdx(x_pos + side - bias_x, y_pos + bias_y, layer);
@@ -58,9 +62,17 @@ export default class PhysicManager {
 
     update(obj) {
 
-        if(this.entityAtXY(obj, obj.pos_x, obj.pos_y)){
-            gameManager.kill(obj);
+
+        const e = this.entityAtXY(obj, obj.pos_x, obj.pos_y)
+
+        if(e != null){
+            if (obj.pos_y + this.default_delta < e.pos_y ) {
+                gameManager.kill(e);
+            } else {
+                gameManager.kill(obj);
+            }
         }
+
 
         if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
             mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
@@ -128,15 +140,15 @@ export default class PhysicManager {
         return bottomRightCorner !== 0 || bottomLeftCorner !== 0;
     }
 
-    entityAtXY(obj, x, y) {
+    entityAtXY(obj, x, y, bias_x = 20, bias_y = 20) {
         for (let i = 0; i < gameManager.entities.length; i++) {
             const e = gameManager.entities[i];
             if (e.name !== obj.name) {
                 if (
-                    x + obj.size_x < e.pos_x ||
-                    y + obj.size_y < e.pos_y ||
-                    x > e.pos_x + e.size_x ||
-                    y > e.pos_y + e.size_y
+                    x + obj.size_x - bias_x < e.pos_x ||
+                    y + obj.size_y - bias_y < e.pos_y ||
+                    x + bias_x > e.pos_x + e.size_x ||
+                    y + bias_y > e.pos_y + e.size_y
                 ) {
                     continue;
                 }
