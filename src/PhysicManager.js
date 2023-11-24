@@ -18,10 +18,6 @@ export default class PhysicManager {
 
     update(obj) {
 
-
-
-
-
         if(!obj.isOnGround && !obj.is_jumping){ // не на земле не прыгаем
             obj.move_y = 1;
         }
