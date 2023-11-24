@@ -92,7 +92,13 @@ export default class GameManager {
 
     play() {
         setInterval(this.update.bind(this), 50);
+    }
 
+    win() {
+        location.reload();
+    }
+    lose() {
+        location.reload();
     }
 }
 

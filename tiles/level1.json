@@ -116,6 +116,12 @@
  "nextlayerid":5,
  "nextobjectid":7,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"rewardCount",
+         "type":"int",
+         "value":4
+        }],
  "renderorder":"left-up",
  "tiledversion":"1.10.2",
  "tileheight":64,

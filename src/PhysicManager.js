@@ -26,19 +26,40 @@ export default class PhysicManager {
 
     }
 
-    update(obj) {
+    getWin(x_pos, y_pos, side, bias_x = 20, bias_y = 20) {
+        const { topLeftCorner, topRightCorner, bottomLeftCorner, bottomRightCorner } = this.getSpace(x_pos, y_pos, side, bias_x, bias_y, 1);
+        return topLeftCorner === 15 && topRightCorner === 15 && bottomLeftCorner === 15 && bottomRightCorner === 15;
 
+    }
+
+    getLose(x_pos, y_pos, side, bias_x = 20, bias_y = 20) {
+        const { topLeftCorner, topRightCorner, bottomLeftCorner, bottomRightCorner } = this.getSpace(x_pos, y_pos, side, bias_x, bias_y, 0);
+        return topLeftCorner === 94 || topRightCorner === 94 || bottomLeftCorner === 94 ||  bottomRightCorner === 94;
+
+    }
+
+    update(obj) {
         if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
             mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
             obj.reward_count++;
         }
 
-        if(!obj.isOnGround && !obj.is_jumping){ // не на земле не прыгаем
+        if (this.getWin(obj.pos_x, obj.pos_y, obj.size_x)) {
+            if( obj.reward_count === mapManager.rewardCount){
+                gameManager.win();
+            }
+        }
+
+        if (this.getLose(obj.pos_x, obj.pos_y, obj.size_x)) {
+            gameManager.lose();
+        }
+
+        if(!obj.isOnGround && !obj.is_jumping){
             obj.move_y = 1;
             obj.speed_y *= obj.g1;
         }
 
-        if(obj.is_jumping && obj.isOnGround) { // прыгаем на земле
+        if(obj.is_jumping && obj.isOnGround) {
             obj.move_y = -1;
             obj.speed_y = obj.jump_force;
         }

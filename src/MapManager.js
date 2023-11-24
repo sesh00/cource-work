@@ -13,6 +13,7 @@ export default class MapManager {
         this.mapSize = {x: 15, y: 15};
         this.tilesets = [];
         this.view = {x: 0, y: 0, w: 1920, h: 960}
+        this.rewardCount = 0;
 
     }
 
@@ -24,6 +25,8 @@ export default class MapManager {
         this.tSize.y = this.mapData.tileheight;
         this.mapSize.x = this.xCount * this.tSize.x;
         this.mapSize.y = this.yCount * this.tSize.y;
+        this.rewardCount = this.mapData.properties[0].value;
+
         const loadImage = (tileset) => {
             const img = new Image();
             img.onload = () => {

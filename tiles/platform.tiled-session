@@ -25,11 +25,11 @@
             "scaleInEditor": 1
         },
         "level1.json": {
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 780,
-                "y": 832
+                "x": 1366.6666666666667,
+                "y": 930.3030303030303
             }
         },
         "level1.json#characters": {
@@ -126,6 +126,7 @@
         "level1.json"
     ],
     "project": "platform.tiled-project",
+    "property.type": "int",
     "recentFiles": [
         "level1.json",
         "platform.json",
