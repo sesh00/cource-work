@@ -8,6 +8,10 @@ export default class GameManager {
         this.player = null;
         this.laterKill = [];
         this.time_loop = null;
+
+        this.startTime = null;
+        this.endTime = null;
+        this.elapsedTime = 0;
     }
 
     initPlayer(obj) {
@@ -88,19 +92,24 @@ export default class GameManager {
 
 
     play() {
-       this.time_loop = setInterval(this.update.bind(this), 60);
+        this.startTime = Date.now();
+        this.time_loop = setInterval(this.update.bind(this), 60);
     }
     stop(){
         if(this.time_loop!== null) clearInterval(this.time_loop);
     }
 
     win() {
+        this.endTime = Date.now();
+        this.elapsedTime = (this.endTime - this.startTime) / 1000; // Преобразование в секунды
+
         let savedUsername = localStorage.getItem('username');
         if (savedUsername !== null) {
             if (savedUsername.length > 0) {
-                recordManager.addRecord(savedUsername, 4);
+                recordManager.addRecord(savedUsername, this.elapsedTime);
             }
         }
+
         this.stop();
         alert('You Win');
         window.location.href = 'index.html';

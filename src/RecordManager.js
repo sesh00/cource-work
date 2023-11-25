@@ -2,7 +2,7 @@ export default class RecordManager {
     addRecord(name, score) {
         const records = JSON.parse(localStorage.getItem('records')) || [];
         records.push({ name, score });
-        records.sort((a, b) => b.score - a.score);
+        records.sort((a, b) => a.score - b.score);
         if (records.length > 3) {
             records.pop();
         }

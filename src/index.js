@@ -26,7 +26,7 @@ function updateTable() {
 
     const records = JSON.parse(localStorage.getItem('records')) || [];
 
-    records.sort((a, b) => b.score - a.score);
+    records.sort((a, b) => a.score - b.score);
 
     records.forEach((record, index) => {
         const row = document.createElement('tr');
