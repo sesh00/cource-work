@@ -68,6 +68,7 @@ export default class PhysicManager {
                 gameManager.kill(e);
             } else {
                 gameManager.kill(obj);
+                gameManager.lose();
             }
         }
 
@@ -79,12 +80,14 @@ export default class PhysicManager {
 
         if (this.getWin(obj.pos_x, obj.pos_y, obj.size_x)) {
             if( obj.reward_count === mapManager.rewardCount){
-                gameManager.kill(obj);
+                gameManager.kill(obj); // победа
+                gameManager.win();
             }
         }
 
         if (this.getLose(obj.pos_x, obj.pos_y, obj.size_x)) {
-            gameManager.kill(obj);
+            gameManager.kill(obj); // поигрышь
+            gameManager.lose();
         }
 
         if(!obj.isOnGround && !obj.is_jumping){ // в свободном падении без прыжка

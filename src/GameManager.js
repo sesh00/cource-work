@@ -1,4 +1,4 @@
-import {canvas, ctx, eventsManager, mapManager, spriteManager} from "./main.js";
+import {canvas, ctx, eventsManager, mapManager, recordManager, spriteManager} from "./main.js";
 import {Player, Enemy} from "./Entity.js";
 
 export default class GameManager {
@@ -7,6 +7,7 @@ export default class GameManager {
         this.entities = [];
         this.player = null;
         this.laterKill = [];
+        this.time_loop = null;
     }
 
     initPlayer(obj) {
@@ -73,8 +74,8 @@ export default class GameManager {
             this.entities[e].draw(ctx);
     }
 
-    loadAll() {
-        mapManager.loadMap("../tiles/level2.json");
+    loadAll(levelPath) {
+        mapManager.loadMap(levelPath);
         spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
 
         this.factory['Player'] = Player;
@@ -87,14 +88,28 @@ export default class GameManager {
 
 
     play() {
-            setInterval(this.update.bind(this), 60); //60
+       this.time_loop = setInterval(this.update.bind(this), 60);
+    }
+    stop(){
+        if(this.time_loop!== null) clearInterval(this.time_loop);
     }
 
     win() {
-        location.reload();
+        let savedUsername = localStorage.getItem('username');
+        if (savedUsername !== null) {
+            if (savedUsername.length > 0) {
+                recordManager.addRecord(savedUsername, 3);
+            }
+        }
+        this.stop();
+        alert('You Win');
+        window.location.href = 'index.html';
     }
     lose() {
-        location.reload();
+        this.stop();
+        alert('Game Over');
+        window.location.href = 'index.html';
+
     }
 }
 
