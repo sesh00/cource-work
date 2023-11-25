@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level1.json",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -28,8 +28,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 134,
-                "y": 576
+                "x": 128,
+                "y": 570
             }
         },
         "level1.json#characters": {
@@ -45,8 +45,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1676,
-                "y": 434
+                "x": 1674,
+                "y": 432
             }
         },
         "level2.json#characters": {
@@ -157,21 +157,20 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
-        "level1.json"
     ],
     "project": "platform.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "sky.xml",
+        "characters.xml",
         "level1.json",
-        "tmp.json",
+        "sheet.xml",
         "level2.json",
+        "tmp.json",
         "platform.json",
         "platform.xml",
-        "sky.xml",
         "platform.tmx",
         "sky2.xml",
-        "sheet.xml",
-        "characters.xml",
         "8614580.tsx",
         "sky2.tsx"
     ],
