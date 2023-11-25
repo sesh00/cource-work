@@ -28,8 +28,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1420,
-                "y": 602
+                "x": 134,
+                "y": 576
             }
         },
         "level1.json#characters": {
@@ -39,6 +39,23 @@
             "scaleInDock": 1
         },
         "level1.json#sky": {
+            "scaleInDock": 1
+        },
+        "level2.json": {
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 1676,
+                "y": 434
+            }
+        },
+        "level2.json#characters": {
+            "scaleInDock": 1
+        },
+        "level2.json#sheet": {
+            "scaleInDock": 1
+        },
+        "level2.json#sky": {
             "scaleInDock": 1
         },
         "platform.json": {
@@ -111,6 +128,23 @@
         "sky2.xml": {
             "scaleInDock": 1,
             "scaleInEditor": 0.75
+        },
+        "tmp.json": {
+            "scale": 0.28763888888888883,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1432.351521004346,
+                "y": 472.8150651859005
+            }
+        },
+        "tmp.json#characters": {
+            "scaleInDock": 1
+        },
+        "tmp.json#sheet": {
+            "scaleInDock": 1
+        },
+        "tmp.json#sky": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "C:/Users/sinne/WebstormProjects/course-work/tiles2",
@@ -129,6 +163,8 @@
     "property.type": "int",
     "recentFiles": [
         "level1.json",
+        "tmp.json",
+        "level2.json",
         "platform.json",
         "platform.xml",
         "sky.xml",
@@ -137,9 +173,7 @@
         "sheet.xml",
         "characters.xml",
         "8614580.tsx",
-        "sky2.tsx",
-        "characters.tsx",
-        "sky.tsx"
+        "sky2.tsx"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFormat": "tsx",

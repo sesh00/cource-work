@@ -74,7 +74,7 @@ export default class GameManager {
     }
 
     loadAll() {
-        mapManager.loadMap("../tiles/level1.json");
+        mapManager.loadMap("../tiles/level2.json");
         spriteManager.loadAtlas("../tiles/characters.json", "../tiles/all-characters.png");
 
         this.factory['Player'] = Player;
