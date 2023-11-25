@@ -36,25 +36,38 @@ body {
 .table th {
     width: 30%;
 }
+
 input {
-    width:60%;
-    padding: 10px;
-    border-radius:20px;
-    border: 1px solid black;
-    margin-bottom: 10px;
-    font-size: 20px;
-    background-color: white;
-    font-family: 'DePixel', sans-serif;
-}
-.button {
     width:40%;
     padding: 10px;
     border-radius:20px;
     border: 1px solid black;
     margin-bottom: 10px;
     font-size: 20px;
-    color: #404142;
     background-color: white;
     font-family: 'DePixel', sans-serif;
 
+}
+.button {
+    width: 40%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    color: #404142;
+    background-color: white;
+    font-family: 'DePixel', sans-serif;
+}
+
+#levelSelect {
+    width: 40%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: white;
+    font-family: 'DePixel', sans-serif;
 }

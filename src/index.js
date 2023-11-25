@@ -1,10 +1,12 @@
 const form = document.querySelector('form');
-const input = form.querySelector('input');
 document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const username = input.value;
+        const username = document.getElementById("usernameInput").value;
+        const level = document.getElementById("levelSelect").value;
+
         localStorage.setItem('username', username);
+        localStorage.setItem('level', level);
         window.location.href = 'main.html';
     });
 });
@@ -12,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 let savedUsername = localStorage.getItem('username');
 
 if (!savedUsername || savedUsername.length === 0) {
-    input.value = "";
+    document.getElementById("usernameInput").value = "";
 } else {
-    input.value = savedUsername;
+    document.getElementById("usernameInput").value = savedUsername;
 }
 
 function updateTable() {

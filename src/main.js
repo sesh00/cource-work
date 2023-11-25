@@ -31,8 +31,8 @@ export function recreateAllManagers() {
     physicManager = new PhysicManager();
     eventsManager = new EventsManager();
     recordManager = new RecordManager();
-
-    gameManager.loadAll(levelPaths.level1);
+    const level = localStorage.getItem('level');
+    gameManager.loadAll(levelPaths[level]);
     gameManager.play();
 }
 

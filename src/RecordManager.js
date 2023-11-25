@@ -1,5 +1,5 @@
 export default class RecordManager {
-    addRecord(savedUsername, score) {
+    addRecord(name, score) {
         const records = JSON.parse(localStorage.getItem('records')) || [];
         records.push({ name, score });
         records.sort((a, b) => b.score - a.score);

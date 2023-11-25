@@ -98,7 +98,7 @@ export default class GameManager {
         let savedUsername = localStorage.getItem('username');
         if (savedUsername !== null) {
             if (savedUsername.length > 0) {
-                recordManager.addRecord(savedUsername, 3);
+                recordManager.addRecord(savedUsername, 4);
             }
         }
         this.stop();

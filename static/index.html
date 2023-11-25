@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="../styles/index.css">
     <link href="https://fonts.cdnfonts.com/css/depixel" rel="stylesheet">
 
-
     <title>Platformer</title>
 </head>
 <body>
@@ -13,9 +12,15 @@
     <h1>
         Platformer
     </h1>
-    <form>
+    <form id="playForm">
         <label>
-            <input placeholder="Username"><br>
+            <input placeholder="Username" id="usernameInput"><br>
+        </label>
+        <label>
+            <select id="levelSelect">
+                <option value="level1">Level 1</option>
+                <option value="level2">Level 2</option>
+            </select>
         </label>
         <input type="submit" value="Play" class="button">
     </form>
