@@ -28,8 +28,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 128,
-                "y": 570
+                "x": 130,
+                "y": 572
             }
         },
         "level1.json#characters": {
@@ -45,8 +45,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1674,
-                "y": 432
+                "x": 1676,
+                "y": 434
             }
         },
         "level2.json#characters": {
@@ -157,20 +157,21 @@
     "map.tileWidth": 64,
     "map.width": 15,
     "openFiles": [
+        "level1.json"
     ],
     "project": "platform.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "sky.xml",
-        "characters.xml",
         "level1.json",
-        "sheet.xml",
-        "level2.json",
         "tmp.json",
+        "level2.json",
         "platform.json",
         "platform.xml",
+        "sky.xml",
         "platform.tmx",
         "sky2.xml",
+        "sheet.xml",
+        "characters.xml",
         "8614580.tsx",
         "sky2.tsx"
     ],

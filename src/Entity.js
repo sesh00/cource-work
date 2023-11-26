@@ -1,4 +1,4 @@
-import {physicManager, spriteManager} from "./main.js";
+import {physicManager, soundManager, spriteManager} from "./main.js";
 
 class Entity {
     constructor() {
@@ -118,6 +118,7 @@ export class Player extends Entity {
     hit() {
         const currentTime = Date.now();
         if ((currentTime - this.lastHitTime) >= this.jumpCooldown) {
+            soundManager.play('../sounds/hit.mp3');
             this.is_hitting = true;
             this.lastHitTime = currentTime;
             physicManager.update(this);
@@ -132,6 +133,7 @@ export class Player extends Entity {
         const currentTime = Date.now();
         if (!this.is_jumping && physicManager.isOnGround(this.pos_x, this.pos_y, this.size_x, 20, 20, 1)
             && (currentTime - this.lastJumpTime) >= this.jumpCooldown) {
+            soundManager.play('../sounds/jump.mp3');
             this.is_jumping = true;
             this.lastJumpTime = currentTime;
             physicManager.update(this);

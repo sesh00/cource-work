@@ -1,4 +1,4 @@
-import {canvas, ctx, eventsManager, mapManager, recordManager, spriteManager} from "./main.js";
+import {canvas, ctx, eventsManager, mapManager, recordManager, soundManager, spriteManager} from "./main.js";
 import {Player, Enemy} from "./Entity.js";
 
 export default class GameManager {
@@ -100,6 +100,7 @@ export default class GameManager {
     }
 
     win() {
+        soundManager.play('../sounds/win.mp3');
         this.endTime = Date.now();
         this.elapsedTime = (this.endTime - this.startTime) / 1000; // Преобразование в секунды
 
@@ -115,6 +116,7 @@ export default class GameManager {
         window.location.href = 'index.html';
     }
     lose() {
+        soundManager.play('../sounds/end.mp3');
         this.stop();
         alert('Game Over');
         window.location.href = 'index.html';

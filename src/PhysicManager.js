@@ -1,4 +1,4 @@
-import { gameManager, mapManager} from "./main.js";
+import {gameManager, mapManager, soundManager} from "./main.js";
 
 export default class PhysicManager {
 
@@ -76,6 +76,7 @@ export default class PhysicManager {
         if (this.getReward(obj.pos_x, obj.pos_y, obj.size_x)) {
             mapManager.setTileSetByIdx(obj.pos_x + obj.size_x/2, obj.pos_y + obj.size_x/2, 85, 1);
             obj.reward_count++;
+            soundManager.play('../sounds/reward.mp3');
         }
 
         if (this.getWin(obj.pos_x, obj.pos_y, obj.size_x)) {
