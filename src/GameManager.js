@@ -102,7 +102,7 @@ export default class GameManager {
     win() {
         soundManager.play('../sounds/win.mp3');
         this.endTime = Date.now();
-        this.elapsedTime = (this.endTime - this.startTime) / 1000; // Преобразование в секунды
+        this.elapsedTime = (this.endTime - this.startTime) / 1000;
 
         let savedUsername = localStorage.getItem('username');
         if (savedUsername !== null) {
