@@ -87,7 +87,7 @@ export default class PhysicManager {
         }
 
         if (this.getLose(obj.pos_x, obj.pos_y, obj.size_x)) {
-            gameManager.kill(obj); // поигрышь
+            gameManager.kill(obj); // поигрыш
             gameManager.lose();
         }
 

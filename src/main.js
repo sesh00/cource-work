@@ -37,7 +37,9 @@ export function recreateAllManagers() {
     physicManager = new PhysicManager();
     eventsManager = new EventsManager();
     recordManager = new RecordManager();
-    const level = localStorage.getItem('level');
+    let level = localStorage.getItem('level');
+    if (level === null) level = "level1"
+
     gameManager.loadAll(levelPaths[level]);
     gameManager.play();
 }
